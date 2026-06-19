@@ -56,20 +56,23 @@ Copie `.env.example` para `.env.local` e ajuste:
 NEXT_PUBLIC_SITE_URL=https://seudominio.com.br
 ```
 
-## Deploy na Cloudflare Pages
+## Deploy na Cloudflare Workers
 
-1. Conecte o repositório Git à Cloudflare Pages
-2. **Framework preset:** None (ou Next.js Static)
-3. **Build command:** `npm run build`
-4. **Build output directory:** `out`
-5. **Node.js version:** 20 ou superior
-6. Adicione a variável `NEXT_PUBLIC_SITE_URL` com a URL final do site
+Este site usa **export estático** (`output: "export"`) e publica a pasta `out/` como assets do Worker `libertad-ofc`.
+
+### Workers Builds (Git)
+
+1. Conecte o repositório Git ao Worker `libertad-ofc`
+2. **Build command:** `npm run build`
+3. **Deploy command:** `npm run deploy`
+4. **Node.js version:** 20 ou superior
+5. Adicione a variável `NEXT_PUBLIC_SITE_URL` com a URL final do site
 
 ### Deploy manual (CLI)
 
 ```bash
 npm run build
-npx wrangler pages deploy out --project-name=libertad-capital
+npm run deploy
 ```
 
 ## Estrutura
