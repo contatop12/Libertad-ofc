@@ -1,0 +1,133 @@
+/**
+ * Libertad Capital — Design Tokens
+ * Fundamentos: verde institucional + dourado patrimonial
+ */
+
+:root {
+  /* Brand — raw */
+  --libertad-green: #0d3d2b;
+  --libertad-green-mid: #1a5c40;
+  --libertad-green-deep: #082a1e;
+  --libertad-gold: #c9a84c;
+  --libertad-gold-light: #e8c97a;
+  --libertad-gold-muted: #a88b3d;
+  --libertad-off-white: #f8f6f1;
+  --libertad-gray-light: #f2f2f0;
+  --libertad-black: #0a0a0a;
+  --libertad-text-dark: #1a1a1a;
+  --libertad-text-medium: #4a4a4a;
+  --libertad-text-muted: #6b6b6b;
+
+  /* Semantic — brand */
+  --color-brand-primary: var(--libertad-green);
+  --color-brand-primary-hover: var(--libertad-green-mid);
+  --color-brand-accent: var(--libertad-gold);
+  --color-brand-accent-hover: var(--libertad-gold-light);
+  --color-brand-accent-foreground: var(--libertad-text-dark);
+
+  /* Semantic — surface */
+  --color-surface-page: #ffffff;
+  --color-surface-muted: var(--libertad-off-white);
+  --color-surface-dark: var(--libertad-green);
+  --color-surface-elevated: #ffffff;
+  --color-surface-card-dark: var(--libertad-green-mid);
+
+  /* Semantic — text */
+  --color-text-primary: var(--libertad-text-dark);
+  --color-text-secondary: var(--libertad-text-medium);
+  --color-text-muted: var(--libertad-text-muted);
+  --color-text-inverse: #ffffff;
+  --color-text-accent: var(--libertad-gold);
+
+  /* Semantic — border & focus */
+  --color-border-subtle: rgb(0 0 0 / 0.06);
+  --color-border-gold: rgb(201 168 76 / 0.4);
+  --color-border-inverse: rgb(255 255 255 / 0.12);
+  --color-focus-ring: var(--libertad-gold);
+
+  /* Typography scale */
+  --text-display-hero: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  --text-display-xl: clamp(2rem, 3.5vw + 0.5rem, 3rem);
+  --text-display-lg: clamp(1.75rem, 2.5vw + 0.5rem, 2.5rem);
+  --text-display-md: clamp(1.375rem, 1.5vw + 0.5rem, 1.75rem);
+  --text-body-lg: 1.125rem;
+  --text-body-md: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-caption: 0.75rem;
+  --text-stat: clamp(2rem, 3vw, 3rem);
+
+  /* Spacing — section rhythm */
+  --section-py: clamp(5rem, 8vw, 7rem);
+  --section-gap: clamp(3rem, 5vw, 4rem);
+  --container-max: 80rem;
+  --container-px: clamp(1rem, 4vw, 2rem);
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-pill: 9999px;
+
+  /* Shadow — elevation */
+  --shadow-sm: 0 1px 2px rgb(13 61 43 / 0.04);
+  --shadow-md: 0 4px 16px rgb(13 61 43 / 0.08);
+  --shadow-lg: 0 12px 40px rgb(13 61 43 / 0.12);
+  --shadow-gold: 0 4px 24px rgb(201 168 76 / 0.15);
+
+  /* Button */
+  --btn-height-sm: 2.25rem;
+  --btn-height-md: 2.75rem;
+  --btn-height-lg: 3.25rem;
+  --btn-radius: var(--radius-md);
+  --btn-gradient-gold: linear-gradient(
+    135deg,
+    #d4b45a 0%,
+    var(--libertad-gold) 45%,
+    var(--libertad-gold-muted) 100%
+  );
+  --btn-gradient-gold-hover: linear-gradient(
+    135deg,
+    var(--libertad-gold-light) 0%,
+    #d4b45a 50%,
+    var(--libertad-gold) 100%
+  );
+  --btn-shadow-gold: 0 2px 8px rgb(0 0 0 / 0.12), 0 8px 24px rgb(201 168 76 / 0.28);
+  --btn-shadow-gold-hover: 0 4px 12px rgb(0 0 0 / 0.14), 0 12px 32px rgb(201 168 76 / 0.38);
+  --btn-shadow-outline-hover: 0 4px 20px rgb(201 168 76 / 0.2);
+
+  /* Form — glass surface */
+  --form-glass-bg: rgb(255 255 255 / 0.04);
+  --form-glass-bg-hover: rgb(255 255 255 / 0.07);
+  --form-glass-border: rgb(255 255 255 / 0.1);
+  --form-glass-border-focus: rgb(201 168 76 / 0.55);
+  --form-card-bg: linear-gradient(
+    160deg,
+    rgb(26 92 64 / 0.95) 0%,
+    rgb(13 61 43 / 0.98) 100%
+  );
+  --form-card-ring: rgb(201 168 76 / 0.12);
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 600ms;
+
+  /* ShadCN bridge — alinhado à marca */
+  --background: var(--color-surface-page);
+  --foreground: var(--color-text-primary);
+  --primary: var(--libertad-green);
+  --primary-foreground: #ffffff;
+  --secondary: var(--libertad-off-white);
+  --secondary-foreground: var(--libertad-text-dark);
+  --muted: var(--libertad-gray-light);
+  --muted-foreground: var(--libertad-text-medium);
+  --accent: var(--libertad-off-white);
+  --accent-foreground: var(--libertad-text-dark);
+  --destructive: #c53030;
+  --border: var(--color-border-subtle);
+  --input: var(--color-border-subtle);
+  --ring: var(--libertad-gold);
+  --radius: var(--radius-md);
+}
