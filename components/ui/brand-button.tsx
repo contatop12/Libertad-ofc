@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const brandButtonVariants = cva(
   [
     "relative inline-flex shrink-0 items-center justify-center gap-2",
-    "font-semibold tracking-wide whitespace-nowrap",
+    "font-semibold tracking-normal sm:tracking-wide whitespace-nowrap",
     "rounded-[var(--btn-radius)] border",
     "transition-[transform,box-shadow,background,border-color,color,filter] duration-300 ease-[var(--ease-out-expo)]",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2",
@@ -17,7 +17,7 @@ const brandButtonVariants = cva(
       variant: {
         gold: [
           "border-libertad-gold-light/25 bg-[image:var(--btn-gradient-gold)] text-libertad-text-dark",
-          "shadow-[var(--btn-shadow-gold)]",
+          "shadow-[var(--btn-shadow-gold)] sm:shadow-[var(--btn-shadow-gold)]",
           "hover:bg-[image:var(--btn-gradient-gold-hover)] hover:shadow-[var(--btn-shadow-gold-hover)] hover:brightness-[1.02]",
           "focus-visible:outline-libertad-gold",
         ].join(" "),
@@ -54,7 +54,7 @@ const brandButtonVariants = cva(
     },
     defaultVariants: {
       variant: "gold",
-      size: "lg",
+      size: "default",
       fullWidth: false,
     },
   },
@@ -77,7 +77,7 @@ type BrandButtonProps = BrandButtonAsLink | BrandButtonAsButton;
 
 export function BrandButton({
   variant = "gold",
-  size = "lg",
+  size = "default",
   fullWidth = false,
   className,
   children,

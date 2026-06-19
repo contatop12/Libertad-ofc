@@ -2,13 +2,23 @@ export const SITE = {
   name: "Libertad Capital",
   tagline: "Boutique de estratégia patrimonial",
   credential: "Escritório credenciado à EQI Investimentos",
-  location: "Indaiatuba, SP",
   coverage: "Atendemos todo o Brasil",
   whatsapp: "5511988595724",
   whatsappDisplay: "(11) 98859-5724",
   email: "contato@libertadcapital.com.br",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://libertadcapital.com.br",
 } as const;
+
+export const OFFICES = [
+  {
+    city: "São Paulo - SP",
+    address: "Av. Brigadeiro Faria Lima, 3600 - Itaim Bibi",
+  },
+  {
+    city: "Indaiatuba - SP",
+    address: "Av. Presidente Kennedy, 1466 - Cidade Nova I",
+  },
+] as const;
 
 export const NAV_LINKS = [
   { label: "Início", href: "#inicio" },
@@ -179,6 +189,24 @@ export const APP_FEATURES = [
   "Renda variável com EQI Trader",
   "Transferências e resgates",
   "Alertas de preço",
+] as const;
+
+export const APP_SHOWCASE = [
+  {
+    eyebrow: "Conheça nosso app",
+    title: "Baixe o app da EQI Investimentos",
+    description:
+      "+ de 1000 produtos com segurança e autonomia para que você atinja seus objetivos.",
+    image: "/images/eqi-investimentos-app.webp",
+    imageAlt: "Aplicativo EQI Investimentos exibido em um smartphone",
+  },
+  {
+    eyebrow: "App Trade",
+    title: "Renda variável na palma da sua mão",
+    description: "Acesse o EQI Trader para operar de qualquer lugar sem burocracias.",
+    image: "/images/eqi-trader-app.webp",
+    imageAlt: "Aplicativo EQI Trader exibido em um smartphone",
+  },
 ] as const;
 
 export const TESTIMONIALS = [

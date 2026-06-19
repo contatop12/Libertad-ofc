@@ -32,6 +32,8 @@
     "zod": "^4.4.3"
   },
   "optionalDependencies": {
+    "@emnapi/core": "1.11.1",
+    "@emnapi/runtime": "1.11.1",
     "@next/swc-linux-x64-gnu": "15.5.19",
     "@next/swc-linux-x64-musl": "15.5.19",
     "@tailwindcss/oxide-linux-x64-gnu": "4.3.1",

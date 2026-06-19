@@ -18,33 +18,27 @@ export function Diferenciais() {
       <SectionReveal>
         <SectionHeader
           tone="dark"
-          title={
-            <>
-              A diferença que você
-              <br />
-              vai sentir desde o primeiro contato
-            </>
-          }
+          title="A diferença que você vai sentir desde o primeiro contato"
         />
       </SectionReveal>
 
-      <div ref={ref} className="mt-[var(--section-gap)] grid gap-8 lg:grid-cols-2">
+      <div ref={ref} className="mt-[var(--section-gap)] grid gap-5 lg:grid-cols-2 lg:gap-6">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -24 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-[var(--radius-lg)] bg-libertad-green-mid/40 p-8 ring-1 ring-white/5"
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="card-surface border border-white/8 bg-libertad-green-mid/35"
         >
-          <div className="mb-6 flex items-center gap-3">
-            <X className="size-5 text-red-400" aria-hidden />
+          <div className="mb-[var(--stack-md)] flex items-center gap-3">
+            <X className="size-5 shrink-0 text-red-400/90" aria-hidden />
             <h3 className="font-heading text-[length:var(--text-display-md)] font-semibold text-white">
               Atendimento tradicional
             </h3>
           </div>
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-[var(--stack-sm)]">
             {DIFFERENTIALS.traditional.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-[length:var(--text-body-sm)] text-white/75">
-                <ThumbsDown className="mt-0.5 size-4 shrink-0 text-red-400/80" aria-hidden />
+              <li key={item} className="flex items-start gap-3 type-caption text-white/72">
+                <ThumbsDown className="mt-0.5 size-4 shrink-0 text-red-400/75" aria-hidden />
                 {item}
               </li>
             ))}
@@ -52,20 +46,20 @@ export function Diferenciais() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 24 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-[var(--radius-lg)] border border-libertad-gold/25 bg-libertad-green-mid/40 p-8 shadow-[var(--shadow-gold)]"
+          transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+          className="card-surface border border-libertad-gold/20 bg-libertad-green-mid/35"
         >
-          <div className="mb-6 flex items-center gap-3">
-            <Check className="size-5 text-libertad-gold" aria-hidden />
+          <div className="mb-[var(--stack-md)] flex items-center gap-3">
+            <Check className="size-5 shrink-0 text-libertad-gold" aria-hidden />
             <h3 className="font-heading text-[length:var(--text-display-md)] font-semibold text-white">
               Experiência Libertad
             </h3>
           </div>
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-[var(--stack-sm)]">
             {DIFFERENTIALS.libertad.map((item) => (
-              <li key={item} className="flex items-start gap-3 text-[length:var(--text-body-sm)] text-white/75">
+              <li key={item} className="flex items-start gap-3 type-caption text-white/72">
                 <ThumbsUp className="mt-0.5 size-4 shrink-0 text-libertad-gold" aria-hidden />
                 {item}
               </li>

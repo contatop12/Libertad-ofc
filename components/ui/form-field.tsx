@@ -28,7 +28,7 @@ export function FormField({ id, label, error, children, className }: FormFieldPr
 }
 
 export const formControlClass = cn(
-  "min-h-12 w-full rounded-[var(--radius-md)] px-4",
+  "min-h-11 w-full rounded-[var(--radius-md)] px-3.5 sm:min-h-12 sm:px-4",
   "border border-[var(--form-glass-border)] bg-[var(--form-glass-bg)] text-white backdrop-blur-sm",
   "text-[length:var(--text-body-md)] placeholder:text-white/35",
   "transition-[border-color,background-color,box-shadow] duration-200",

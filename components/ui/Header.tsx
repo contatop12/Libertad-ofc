@@ -42,7 +42,7 @@ export function Header() {
           : "border-b border-transparent bg-libertad-green/85 backdrop-blur-md",
       )}
     >
-      <div className="mx-auto flex h-16 max-w-[var(--container-max)] items-center justify-between gap-4 px-[var(--container-px)]">
+      <div className="mx-auto flex h-14 max-w-[var(--container-max)] items-center justify-between gap-3 px-[var(--container-px)] sm:h-16 sm:gap-4">
         <Link href="#inicio" onClick={() => scrollToSection("#inicio")} aria-label="Ir para o início">
           <BrandLogo variant="header" />
         </Link>
@@ -86,13 +86,13 @@ export function Header() {
               <SheetHeader>
                 <SheetTitle className="font-heading text-white">Menu</SheetTitle>
               </SheetHeader>
-              <nav className="mt-8 flex flex-col gap-4" aria-label="Navegação mobile">
+              <nav className="mt-6 flex flex-col gap-1" aria-label="Navegação mobile">
                 {NAV_LINKS.map((link) => (
                   <button
                     key={link.href}
                     type="button"
                     onClick={() => handleNavClick(link.href)}
-                    className="text-left text-[length:var(--text-body-md)] font-medium text-white/90 transition-colors hover:text-libertad-gold"
+                    className="rounded-[var(--radius-md)] px-2 py-3 text-left text-[length:var(--text-body-md)] font-medium text-white/88 transition-colors hover:bg-white/5 hover:text-libertad-gold"
                   >
                     {link.label}
                   </button>
@@ -103,6 +103,7 @@ export function Header() {
                   rel="noopener noreferrer"
                   variant="gold-outline"
                   size="default"
+                  fullWidth
                   className="mt-4"
                 >
                   Agendar Reunião

@@ -17,7 +17,7 @@ import {
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { OBJETIVO_OPTIONS, PATRIMONIO_OPTIONS, SITE } from "@/lib/constants";
+import { OBJETIVO_OPTIONS, OFFICES, PATRIMONIO_OPTIONS, SITE } from "@/lib/constants";
 import { contactSchema, type ContactFormData } from "@/lib/schemas/contact";
 import { buildWhatsAppLink, buildWhatsAppMessage, cn, formatWhatsApp } from "@/lib/utils";
 
@@ -42,7 +42,7 @@ export function Formulario() {
 
   return (
     <Section id="contato" tone="dark">
-      <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+      <div className="grid gap-[var(--stack-xl)] lg:grid-cols-2 lg:gap-16">
         <SectionReveal>
           <SectionHeader
             tone="dark"
@@ -56,7 +56,7 @@ export function Formulario() {
             }
             subtitle="Cada relacionamento começa com uma conversa. Queremos entender seus objetivos, seu momento de vida e como podemos construir juntos a melhor estratégia para o seu patrimônio."
           />
-          <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-8">
+          <div className="mt-[var(--stack-xl)] flex flex-col gap-[var(--stack-lg)] border-t border-white/10 pt-[var(--stack-lg)]">
             <div className="flex flex-col gap-1 text-[length:var(--text-body-md)]">
               <span className="text-[length:var(--text-caption)] font-medium uppercase tracking-[0.12em] text-white/45">
                 WhatsApp
@@ -70,36 +70,42 @@ export function Formulario() {
                 {SITE.whatsappDisplay}
               </a>
             </div>
-            <div className="flex flex-col gap-1 text-[length:var(--text-body-md)]">
+            <div className="flex flex-col gap-3 text-[length:var(--text-body-md)]">
               <span className="text-[length:var(--text-caption)] font-medium uppercase tracking-[0.12em] text-white/45">
                 Localização
               </span>
-              <span className="text-white/75">
-                {SITE.location} — {SITE.coverage}
-              </span>
+              <div className="grid gap-6 sm:grid-cols-2">
+                {OFFICES.map((office) => (
+                  <div key={office.city} className="flex flex-col gap-1">
+                    <span className="font-medium text-libertad-gold">{office.city}</span>
+                    <span className="text-white/75">{office.address}</span>
+                  </div>
+                ))}
+              </div>
+              <span className="text-white/55">{SITE.coverage}</span>
             </div>
           </div>
         </SectionReveal>
 
         <SectionReveal delay={0.15}>
-          <div className="relative overflow-hidden rounded-[var(--radius-xl)] p-px shadow-[var(--shadow-lg)]">
+          <div className="relative overflow-visible rounded-[var(--radius-xl)] p-px shadow-[var(--shadow-lg)]">
             <div
               className="absolute inset-0 rounded-[var(--radius-xl)] bg-gradient-to-br from-libertad-gold/30 via-white/5 to-libertad-gold/10"
               aria-hidden
             />
             <div
-              className="relative rounded-[calc(var(--radius-xl)-1px)] bg-[image:var(--form-card-bg)] p-8 ring-1 ring-[var(--form-card-ring)] sm:p-10"
+              className="relative rounded-[calc(var(--radius-xl)-1px)] bg-[image:var(--form-card-bg)] p-5 ring-1 ring-[var(--form-card-ring)] sm:p-7 lg:p-8"
             >
-              <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-libertad-gold/50 to-transparent sm:inset-x-10" aria-hidden />
+              <div className="absolute inset-x-5 top-0 h-px bg-gradient-to-r from-transparent via-libertad-gold/40 to-transparent sm:inset-x-7" aria-hidden />
 
-              <div className="mb-8 flex items-start justify-between gap-4">
-                <h3 className="font-heading max-w-sm text-[length:var(--text-display-md)] font-semibold leading-snug tracking-tight text-white">
+              <div className="mb-[var(--stack-lg)] flex items-start justify-between gap-3">
+                <h3 className="font-heading max-w-sm text-[length:var(--text-display-md)] font-semibold leading-[var(--leading-snug)] tracking-tight text-white text-balance">
                   Converse com um especialista patrimonial
                 </h3>
                 <ShieldCheck className="mt-1 size-5 shrink-0 text-libertad-gold/60" aria-hidden />
               </div>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6" noValidate>
+              <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5" noValidate>
                 <FormField id="nome" label="Nome completo" error={errors.nome?.message}>
                   <Input
                     id="nome"
@@ -139,7 +145,7 @@ export function Formulario() {
                   />
                 </FormField>
 
-                <div className="grid gap-6 sm:grid-cols-2">
+                <div className="grid gap-5 sm:grid-cols-2">
                   <FormField label="Patrimônio aproximado" error={errors.patrimonio?.message}>
                     <Select
                       value={patrimonio}
@@ -153,7 +159,7 @@ export function Formulario() {
                       >
                         <SelectValue placeholder="Selecione" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent alignItemWithTrigger={false} side="bottom" sideOffset={8}>
                         {PATRIMONIO_OPTIONS.map((opt) => (
                           <SelectItem key={opt.value} value={opt.value}>
                             {opt.label}
@@ -176,7 +182,7 @@ export function Formulario() {
                       >
                         <SelectValue placeholder="Selecione" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent alignItemWithTrigger={false} side="bottom" sideOffset={8}>
                         {OBJETIVO_OPTIONS.map((opt) => (
                           <SelectItem key={opt.value} value={opt.value}>
                             {opt.label}

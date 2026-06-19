@@ -12,32 +12,26 @@ export function PlataformaEQI() {
     <Section id="eqi" tone="muted">
       <SectionReveal>
         <SectionHeader
-          title={
-            <>
-              Uma plataforma completa
-              <br />
-              para cada estratégia patrimonial
-            </>
-          }
+          title="Uma plataforma completa para cada estratégia patrimonial"
           subtitle="Acesso a mais de 1.000 oportunidades de investimento nacionais e internacionais, com a solidez do BTG Pactual como custodiante."
         />
       </SectionReveal>
 
-      <div className="mt-[var(--section-gap)] grid gap-6 lg:grid-cols-3">
+      <div className="mt-[var(--section-gap)] grid gap-4 sm:gap-5 lg:grid-cols-3">
         {EQI_TIERS.map((tier, index) => (
-          <SectionReveal key={tier.title} delay={index * 0.1}>
+          <SectionReveal key={tier.title} delay={index * 0.08}>
             <div
-              className={`flex h-full flex-col rounded-[var(--radius-lg)] bg-white p-8 shadow-[var(--shadow-sm)] transition-shadow hover:shadow-[var(--shadow-md)] ${
+              className={`card-surface flex h-full flex-col bg-white ${
                 tier.featured
-                  ? "border-2 border-libertad-gold shadow-[var(--shadow-gold)]"
+                  ? "border-2 border-libertad-gold/80"
                   : "border border-[var(--color-border-subtle)]"
               }`}
             >
               <h3 className="font-heading text-[length:var(--text-display-md)] font-semibold text-libertad-text-dark">
                 {tier.title}
               </h3>
-              <p className="mt-2 text-[length:var(--text-body-sm)] text-libertad-text-medium">{tier.subtitle}</p>
-              <p className="font-heading mt-4 mb-8 text-[length:var(--text-display-md)] font-semibold text-libertad-gold">
+              <p className="type-caption mt-[var(--stack-xs)] text-libertad-text-medium">{tier.subtitle}</p>
+              <p className="font-heading mt-[var(--stack-md)] mb-[var(--stack-lg)] text-[length:var(--text-display-md)] font-semibold text-libertad-gold">
                 {tier.value}
               </p>
               <BrandButton
@@ -56,18 +50,18 @@ export function PlataformaEQI() {
         ))}
       </div>
 
-      <div className="gold-divider my-10" />
+      <div className="gold-divider my-[var(--stack-xl)]" />
 
-      <div className="flex flex-wrap items-center justify-center gap-6">
+      <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-6 sm:gap-y-3">
         {EQI_FEATURES.map((feature) => (
-          <div key={feature} className="flex items-center gap-2 text-[length:var(--text-body-sm)] text-libertad-text-medium">
-            <CheckCircle2 className="size-4 text-libertad-gold" aria-hidden />
+          <div key={feature} className="flex items-center gap-2 type-caption text-libertad-text-medium">
+            <CheckCircle2 className="size-4 shrink-0 text-libertad-gold" aria-hidden />
             {feature}
           </div>
         ))}
       </div>
 
-      <p className="mx-auto mt-10 max-w-3xl text-center text-[length:var(--text-body-sm)] leading-relaxed text-libertad-text-muted">
+      <p className="type-caption mx-auto mt-[var(--stack-xl)] max-w-[var(--content-max-wide)] text-center text-libertad-text-muted">
         A EQI Investimentos é uma das maiores casas de assessoria independentes do Brasil, com o BTG Pactual
         — maior banco de investimentos da América Latina — como parceiro estratégico e custodiante.
       </p>

@@ -24,6 +24,12 @@ const title = "Libertad Capital | Assessoria Patrimonial em Indaiatuba | Credenc
 const description =
   "Boutique de estratégia patrimonial em Indaiatuba-SP. Atendimento exclusivo para investidores de alta renda. Escritório credenciado à EQI Investimentos. Agende sua reunião.";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title,

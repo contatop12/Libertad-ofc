@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { BrandButton } from "@/components/ui/brand-button";
 import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "@/lib/brand-icons";
-import { FOOTER_SOLUTIONS, NAV_LINKS, SITE } from "@/lib/constants";
+import { FOOTER_SOLUTIONS, NAV_LINKS, OFFICES, SITE } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 
 const socialLinkClass =
@@ -12,18 +12,25 @@ const socialLinkClass =
 export function Footer() {
   return (
     <footer className="border-t border-libertad-gold/15 bg-gradient-to-b from-libertad-green to-libertad-green-deep text-white">
-      <div className="mx-auto max-w-[var(--container-max)] px-[var(--container-px)] py-16">
-        <div className="mb-12 border-b border-white/10 pb-12">
+      <div className="mx-auto max-w-[var(--container-max)] px-[var(--container-px)] py-12 sm:py-16">
+        <div className="mb-10 border-b border-white/10 pb-10 sm:mb-12 sm:pb-12">
           <BrandLogo variant="footer" />
         </div>
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-10">
           <div>
             <h3 className="font-heading text-lg font-semibold">{SITE.name}</h3>
             <p className="mt-4 text-[length:var(--text-body-sm)] leading-relaxed text-white/70">
               {SITE.tagline}. {SITE.credential}.
             </p>
-            <p className="mt-4 text-[length:var(--text-body-sm)] text-white/70">{SITE.location}</p>
+            <div className="mt-4 flex flex-col gap-3 text-[length:var(--text-body-sm)] text-white/70">
+              {OFFICES.map((office) => (
+                <div key={office.city}>
+                  <p className="font-medium text-libertad-gold">{office.city}</p>
+                  <p>{office.address}</p>
+                </div>
+              ))}
+            </div>
             <a
               href={buildWhatsAppLink()}
               target="_blank"

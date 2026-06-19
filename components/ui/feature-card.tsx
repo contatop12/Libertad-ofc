@@ -24,21 +24,21 @@ export function FeatureCard({
   return (
     <div
       className={cn(
-        "group flex h-full flex-col rounded-[var(--radius-lg)] p-8 transition-[border-color,box-shadow,transform] duration-[var(--duration-normal)]",
+        "group flex h-full flex-col rounded-[var(--radius-lg)] p-5 transition-[border-color,box-shadow] duration-[var(--duration-normal)] sm:p-6 lg:p-7",
         isDark
-          ? "border border-transparent bg-libertad-green-mid hover:border-libertad-gold/40"
-          : "border border-[var(--color-border-subtle)] bg-white shadow-[var(--shadow-sm)] hover:-translate-y-0.5 hover:border-libertad-gold/50 hover:shadow-[var(--shadow-md)]",
+          ? "border border-white/8 bg-libertad-green-mid/50 hover:border-libertad-gold/30"
+          : "border border-[var(--color-border-subtle)] bg-white hover:border-libertad-gold/35 sm:hover:shadow-[var(--shadow-sm)]",
         className,
       )}
     >
       <Icon
-        className={cn("size-8", isDark ? "text-libertad-gold" : "text-libertad-green")}
+        className={cn("size-6 sm:size-7", isDark ? "text-libertad-gold" : "text-libertad-green")}
         strokeWidth={1.5}
         aria-hidden
       />
       <h3
         className={cn(
-          "font-heading mt-4 text-[length:var(--text-display-md)] font-semibold tracking-tight",
+          "font-heading mt-[var(--stack-sm)] text-[length:var(--text-display-md)] font-semibold tracking-tight",
           isDark ? "text-white" : "text-libertad-text-dark",
         )}
       >
@@ -46,8 +46,8 @@ export function FeatureCard({
       </h3>
       <p
         className={cn(
-          "mt-3 text-[length:var(--text-body-sm)] leading-relaxed",
-          isDark ? "text-white/80" : "text-libertad-text-medium",
+          "type-caption mt-[var(--stack-xs)] sm:mt-[var(--stack-sm)]",
+          isDark ? "text-white/72" : "text-libertad-text-medium",
         )}
       >
         {description}

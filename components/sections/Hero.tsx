@@ -10,17 +10,20 @@ import { HERO_IMAGE, SITE } from "@/lib/constants";
 import { buildWhatsAppLink, scrollToSection } from "@/lib/utils";
 
 const fadeUp = (delay: number) => ({
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { delay, duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { delay, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
   },
 });
 
 export function Hero() {
   return (
-    <section id="inicio" className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section
+      id="inicio"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden pt-16"
+    >
       <Image
         src={HERO_IMAGE}
         alt="Skyline urbano premium"
@@ -29,11 +32,11 @@ export function Hero() {
         className="object-cover"
         sizes="100vw"
       />
-      <div className="absolute inset-0 bg-libertad-green/80" />
-      <div className="absolute inset-0 bg-gradient-to-t from-libertad-green-deep/60 via-transparent to-libertad-green/40" />
+      <div className="absolute inset-0 bg-libertad-green/82" />
+      <div className="absolute inset-0 bg-gradient-to-t from-libertad-green-deep/70 via-transparent to-libertad-green/35" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-[var(--container-px)] py-32 text-center">
-        <motion.div initial="hidden" animate="visible" variants={fadeUp(0)}>
+      <div className="relative z-10 mx-auto max-w-[var(--content-max-wide)] px-[var(--container-px)] py-16 sm:py-24 lg:py-28">
+        <motion.div initial="hidden" animate="visible" variants={fadeUp(0)} className="text-center">
           <Eyebrow variant="pill" tone="dark">
             {SITE.credential}
           </Eyebrow>
@@ -42,20 +45,17 @@ export function Hero() {
         <motion.h1
           initial="hidden"
           animate="visible"
-          variants={fadeUp(0.15)}
-          className="font-heading mt-8 text-[length:var(--text-display-hero)] font-semibold leading-[1.08] tracking-tight text-white"
+          variants={fadeUp(0.12)}
+          className="font-heading mt-[var(--stack-lg)] text-center text-[length:var(--text-display-hero)] font-semibold leading-[var(--leading-tight)] tracking-tight text-white text-balance"
         >
-          Grandes patrimônios
-          <br />
-          exigem decisões
-          <br />à altura.
+          Grandes patrimônios exigem decisões à altura.
         </motion.h1>
 
         <motion.p
           initial="hidden"
           animate="visible"
-          variants={fadeUp(0.3)}
-          className="mx-auto mt-6 max-w-xl text-[length:var(--text-body-lg)] leading-relaxed text-white/80"
+          variants={fadeUp(0.24)}
+          className="type-subtitle mx-auto mt-[var(--stack-md)] max-w-[var(--content-max)] text-center text-white/78 text-balance sm:mt-[var(--stack-lg)]"
         >
           A Libertad Capital, escritório credenciado à EQI Investimentos, atende investidores que buscam
           estratégia, proteção patrimonial e acesso às melhores oportunidades do mercado.
@@ -64,21 +64,25 @@ export function Hero() {
         <motion.div
           initial="hidden"
           animate="visible"
-          variants={fadeUp(0.45)}
-          className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+          variants={fadeUp(0.36)}
+          className="mt-[var(--stack-xl)] flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4"
         >
           <BrandButton
             href={buildWhatsAppLink()}
             target="_blank"
             rel="noopener noreferrer"
             variant="gold"
-            className="w-full sm:w-auto"
+            size="lg"
+            fullWidth
+            className="sm:w-auto sm:min-w-[16rem]"
           >
             Agendar Reunião Estratégica
           </BrandButton>
           <BrandButton
             variant="ghost-white"
-            className="w-full sm:w-auto"
+            size="lg"
+            fullWidth
+            className="sm:w-auto sm:min-w-[16rem]"
             onClick={() => scrollToSection("#sobre-rafaela")}
           >
             Conheça Nossa História
@@ -89,11 +93,11 @@ export function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2"
+        transition={{ delay: 1, duration: 0.8 }}
+        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 sm:block"
         aria-hidden
       >
-        <ChevronDown className="size-8 animate-bounce text-white/50" />
+        <ChevronDown className="size-7 animate-bounce text-white/40" />
       </motion.div>
     </section>
   );

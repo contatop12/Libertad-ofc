@@ -26,7 +26,7 @@ export function SectionHeader({
   return (
     <header
       className={cn(
-        "max-w-3xl",
+        "max-w-[var(--content-max-wide)]",
         align === "center" && "mx-auto text-center",
         className,
       )}
@@ -38,9 +38,9 @@ export function SectionHeader({
       )}
       <h2
         className={cn(
-          "font-heading text-[length:var(--text-display-xl)] font-semibold leading-[1.12] tracking-tight",
+          "type-title text-balance",
           isDark ? "text-white" : "text-libertad-text-dark",
-          eyebrow && "mt-4",
+          eyebrow ? "mt-[var(--stack-sm)]" : undefined,
         )}
       >
         {title}
@@ -48,8 +48,8 @@ export function SectionHeader({
       {subtitle && (
         <p
           className={cn(
-            "mt-6 text-[length:var(--text-body-lg)] leading-relaxed",
-            isDark ? "text-white/75" : "text-libertad-text-medium",
+            "type-subtitle mt-[var(--stack-md)] text-balance sm:mt-[var(--stack-lg)]",
+            isDark ? "text-white/72" : "text-libertad-text-medium",
           )}
         >
           {subtitle}
@@ -58,8 +58,8 @@ export function SectionHeader({
       {note && (
         <p
           className={cn(
-            "mt-4 text-[length:var(--text-body-sm)] leading-relaxed",
-            isDark ? "text-white/60" : "text-libertad-text-medium/80",
+            "type-caption mt-[var(--stack-sm)] text-balance",
+            isDark ? "text-white/55" : "text-libertad-text-muted",
           )}
         >
           {note}

@@ -45,22 +45,34 @@
   --color-border-inverse: rgb(255 255 255 / 0.12);
   --color-focus-ring: var(--libertad-gold);
 
-  /* Typography scale */
-  --text-display-hero: clamp(2.5rem, 5vw + 1rem, 4.5rem);
-  --text-display-xl: clamp(2rem, 3.5vw + 0.5rem, 3rem);
-  --text-display-lg: clamp(1.75rem, 2.5vw + 0.5rem, 2.5rem);
-  --text-display-md: clamp(1.375rem, 1.5vw + 0.5rem, 1.75rem);
-  --text-body-lg: 1.125rem;
-  --text-body-md: 1rem;
-  --text-body-sm: 0.875rem;
-  --text-caption: 0.75rem;
-  --text-stat: clamp(2rem, 3vw, 3rem);
+  /* Typography scale — mobile-first hierarchy */
+  --text-display-hero: clamp(2rem, 6vw + 0.75rem, 4.25rem);
+  --text-display-xl: clamp(1.625rem, 3.5vw + 0.75rem, 2.75rem);
+  --text-display-lg: clamp(1.375rem, 2vw + 0.75rem, 2.125rem);
+  --text-display-md: clamp(1.125rem, 1vw + 0.875rem, 1.5rem);
+  --text-body-lg: clamp(1rem, 0.35vw + 0.95rem, 1.125rem);
+  --text-body-md: clamp(0.9375rem, 0.2vw + 0.9rem, 1rem);
+  --text-body-sm: clamp(0.8125rem, 0.15vw + 0.78rem, 0.875rem);
+  --text-caption: 0.6875rem;
+  --text-stat: clamp(1.75rem, 4vw + 0.5rem, 2.75rem);
+
+  --leading-tight: 1.12;
+  --leading-snug: 1.35;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
 
   /* Spacing — section rhythm */
-  --section-py: clamp(5rem, 8vw, 7rem);
-  --section-gap: clamp(3rem, 5vw, 4rem);
-  --container-max: 80rem;
-  --container-px: clamp(1rem, 4vw, 2rem);
+  --section-py: clamp(3.5rem, 7vw, 6.5rem);
+  --section-gap: clamp(2rem, 4vw, 3.25rem);
+  --stack-xs: 0.5rem;
+  --stack-sm: 0.875rem;
+  --stack-md: 1.25rem;
+  --stack-lg: 1.75rem;
+  --stack-xl: 2.5rem;
+  --container-max: 72rem;
+  --container-px: clamp(1.25rem, 5vw, 2rem);
+  --content-max: 36rem;
+  --content-max-wide: 42rem;
 
   /* Radius */
   --radius-sm: 0.375rem;
@@ -71,14 +83,14 @@
 
   /* Shadow — elevation */
   --shadow-sm: 0 1px 2px rgb(13 61 43 / 0.04);
-  --shadow-md: 0 4px 16px rgb(13 61 43 / 0.08);
-  --shadow-lg: 0 12px 40px rgb(13 61 43 / 0.12);
-  --shadow-gold: 0 4px 24px rgb(201 168 76 / 0.15);
+  --shadow-md: 0 4px 16px rgb(13 61 43 / 0.06);
+  --shadow-lg: 0 8px 28px rgb(13 61 43 / 0.08);
+  --shadow-gold: 0 4px 20px rgb(201 168 76 / 0.12);
 
   /* Button */
-  --btn-height-sm: 2.25rem;
-  --btn-height-md: 2.75rem;
-  --btn-height-lg: 3.25rem;
+  --btn-height-sm: 2.5rem;
+  --btn-height-md: 2.875rem;
+  --btn-height-lg: 3.125rem;
   --btn-radius: var(--radius-md);
   --btn-gradient-gold: linear-gradient(
     135deg,

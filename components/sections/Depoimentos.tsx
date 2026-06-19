@@ -74,13 +74,13 @@ export function Depoimentos() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -16 }}
                 transition={{ duration: 0.4 }}
-                className="flex flex-col rounded-[var(--radius-lg)] border border-[var(--color-border-subtle)] bg-white p-8 shadow-[var(--shadow-sm)]"
+                className="flex flex-col rounded-[var(--radius-lg)] border border-[var(--color-border-subtle)] bg-white p-5 sm:p-6"
               >
-                <Quote className="size-10 text-libertad-gold/30" aria-hidden />
-                <p className="mt-4 flex-1 text-[length:var(--text-body-sm)] leading-relaxed text-libertad-text-medium">
+                <Quote className="size-8 text-libertad-gold/25 sm:size-9" aria-hidden />
+                <p className="type-caption mt-[var(--stack-sm)] flex-1 text-libertad-text-medium">
                   {testimonial.text}
                 </p>
-                <div className="mt-6 flex items-center gap-3 border-t border-libertad-gold/15 pt-6">
+                <div className="mt-[var(--stack-md)] flex items-center gap-3 border-t border-libertad-gold/12 pt-[var(--stack-md)]">
                   <div className="flex size-10 items-center justify-center rounded-full bg-libertad-green font-heading text-xs font-semibold text-white">
                     {getInitials(testimonial.name)}
                   </div>

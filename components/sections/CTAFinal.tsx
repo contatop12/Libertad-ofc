@@ -6,19 +6,11 @@ import { buildWhatsAppLink } from "@/lib/utils";
 
 export function CTAFinal() {
   return (
-    <Section tone="gradient" containerClassName="max-w-3xl text-center">
+    <Section tone="gradient" containerClassName="max-w-[var(--content-max-wide)] text-center">
       <SectionReveal>
         <SectionHeader
           tone="dark"
-          title={
-            <>
-              Seu patrimônio merece
-              <br />
-              uma estratégia à altura
-              <br />
-              da sua trajetória.
-            </>
-          }
+          title="Seu patrimônio merece uma estratégia à altura da sua trajetória."
           subtitle="Dê o primeiro passo. Uma conversa pode mudar a forma como você cuida do que construiu."
         />
         <BrandButton
@@ -27,7 +19,8 @@ export function CTAFinal() {
           rel="noopener noreferrer"
           variant="gold"
           size="lg"
-          className="mt-10 px-10"
+          fullWidth
+          className="mt-[var(--stack-xl)] sm:w-auto sm:min-w-[18rem]"
         >
           Agendar reunião estratégica
         </BrandButton>

@@ -11,28 +11,17 @@ export function QuemAtendemos() {
       <SectionReveal>
         <SectionHeader
           tone="dark"
-          title={
-            <>
-              Patrimônio exige
-              <br />
-              estratégia personalizada
-            </>
-          }
+          title="Patrimônio exige estratégia personalizada"
           subtitle="Atendemos investidores que buscam mais do que rentabilidade — buscam um parceiro estratégico para construir, proteger e perpetuar seu patrimônio."
         />
       </SectionReveal>
 
-      <div className="mt-[var(--section-gap)] grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-[var(--section-gap)] grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {AUDIENCE_CARDS.map((card, index) => {
           const Icon = getIcon(card.icon);
           return (
-            <SectionReveal key={card.title} delay={index * 0.08}>
-              <FeatureCard
-                icon={Icon}
-                title={card.title}
-                description={card.text}
-                tone="dark"
-              />
+            <SectionReveal key={card.title} delay={index * 0.06}>
+              <FeatureCard icon={Icon} title={card.title} description={card.text} tone="dark" />
             </SectionReveal>
           );
         })}
