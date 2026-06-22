@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { BrandButton } from "@/components/ui/brand-button";
 import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "@/lib/brand-icons";
-import { FOOTER_SOLUTIONS, NAV_LINKS, OFFICES, SITE } from "@/lib/constants";
+import { CONTACT_SECTION_HREF, FOOTER_LINKS, FOOTER_SOLUTIONS, NAV_LINKS, OFFICES, SITE, SOCIAL_LINKS } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 
 const socialLinkClass =
@@ -21,7 +21,7 @@ export function Footer() {
           <div>
             <h3 className="font-heading text-lg font-semibold">{SITE.name}</h3>
             <p className="mt-4 text-[length:var(--text-body-sm)] leading-relaxed text-white/70">
-              {SITE.tagline}. {SITE.credential}.
+              {SITE.tagline}
             </p>
             <div className="mt-4 flex flex-col gap-3 text-[length:var(--text-body-sm)] text-white/70">
               {OFFICES.map((office) => (
@@ -90,14 +90,7 @@ export function Footer() {
                 {SITE.email}
               </a>
             </div>
-            <BrandButton
-              href={buildWhatsAppLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="gold"
-              size="default"
-              className="mt-6"
-            >
+            <BrandButton href={CONTACT_SECTION_HREF} variant="gold" size="default" className="mt-6">
               Agendar Reunião
             </BrandButton>
           </div>
@@ -105,27 +98,56 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-6 border-t border-white/10 pt-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="text-[length:var(--text-caption)] text-white/50">
-            <p>© 2025 Libertad Capital. Todos os direitos reservados. Escritório credenciado à EQI Investimentos.</p>
+            <p>
+              © {new Date().getFullYear()} Libertad Capital. Todos os direitos reservados. Escritório
+              credenciado à EQI Investimentos.
+            </p>
             <p className="mt-1">Rafaela Alves — Ancord | CEA | CPA-20</p>
+            <p className="mt-1">
+              <a
+                href={FOOTER_LINKS.p12Credit}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-libertad-gold"
+              >
+                Site criado pela P12DIGITAL
+              </a>
+            </p>
           </div>
           <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href="#"
+            <a
+              href={FOOTER_LINKS.privacy}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[length:var(--text-caption)] text-white/50 transition-colors hover:text-libertad-gold"
             >
               Política de Privacidade
-            </Link>
-            <Link
-              href="#"
+            </a>
+            <a
+              href={FOOTER_LINKS.terms}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-[length:var(--text-caption)] text-white/50 transition-colors hover:text-libertad-gold"
             >
               Termos de Uso
-            </Link>
+            </a>
             <div className="flex items-center gap-2">
-              <a href="#" aria-label="Instagram" className={socialLinkClass}>
+              <a
+                href={SOCIAL_LINKS.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram da Rafaela Alves"
+                className={socialLinkClass}
+              >
                 <FaInstagram className="size-4" aria-hidden />
               </a>
-              <a href="#" aria-label="LinkedIn" className={socialLinkClass}>
+              <a
+                href={SOCIAL_LINKS.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn da Rafaela Alves"
+                className={socialLinkClass}
+              >
                 <FaLinkedinIn className="size-4" aria-hidden />
               </a>
             </div>

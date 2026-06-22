@@ -6,7 +6,7 @@ import { EQI_STATS } from "@/lib/constants";
 
 export function AutoridadeEQI() {
   return (
-    <Section id="eqi-stats" tone="muted">
+    <Section id="eqi-stats" tone="muted" containerClassName="max-w-[1300px]">
       <SectionReveal>
         <SectionHeader
           title="A força da estrutura por trás da Libertad"
@@ -15,17 +15,19 @@ export function AutoridadeEQI() {
         />
       </SectionReveal>
 
-      <div className="mt-[var(--section-gap)] grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+      <div className="mt-[var(--section-gap)] grid items-stretch gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
         {EQI_STATS.map((stat, index) => (
-          <SectionReveal key={stat.label} delay={index * 0.08}>
-            <div className="card-surface border border-[var(--color-border-subtle)] bg-white text-center">
+          <SectionReveal key={stat.label} delay={index * 0.08} className="h-full">
+            <div className="card-surface flex h-full flex-col items-center justify-center border border-[var(--color-border-subtle)] bg-white text-center">
               <AnimatedCounter
                 value={stat.value}
                 prefix={stat.prefix}
                 suffix={stat.suffix}
                 isText={stat.isText}
               />
-              <p className="type-caption mt-[var(--stack-sm)] text-libertad-text-medium">{stat.label}</p>
+              <p className="type-caption mt-[var(--stack-sm)] flex flex-1 items-center justify-center text-libertad-text-medium">
+                {stat.label}
+              </p>
             </div>
           </SectionReveal>
         ))}

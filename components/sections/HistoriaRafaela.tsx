@@ -6,7 +6,7 @@ import { BrandButton } from "@/components/ui/brand-button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Section } from "@/components/ui/section";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { RAFAELA_CREDENTIALS } from "@/lib/constants";
+import { RAFAELA_CREDENTIALS, RAFAELA_SITE_URL } from "@/lib/constants";
 
 export function HistoriaRafaela() {
   return (
@@ -34,9 +34,17 @@ export function HistoriaRafaela() {
           <div className="mt-[var(--stack-lg)] flex flex-col gap-[var(--stack-md)] type-body text-libertad-text-medium">
             <p>A Libertad nasceu da convicção de que patrimônio não deve ser tratado como número.</p>
             <p>
-              Rafaela Alves construiu sua trajetória passando por instituições de prestígio, acumulando mais
-              de R$ 500 milhões gerenciados ao longo da carreira e atendendo investidores em todo o Brasil com
-              soluções para o mercado local e internacional.
+              <a
+                href={RAFAELA_SITE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-libertad-green-mid underline-offset-2 transition-colors hover:text-libertad-gold hover:underline"
+              >
+                Rafaela Alves
+              </a>{" "}
+              construiu sua trajetória passando por instituições de prestígio, acumulando mais de R$ 500
+              milhões gerenciados ao longo da carreira e atendendo investidores em todo o Brasil com soluções
+              para o mercado local e internacional.
             </p>
             <p>
               Depois de anos acompanhando investidores, empresários e famílias em momentos decisivos de suas
@@ -62,11 +70,11 @@ export function HistoriaRafaela() {
           </div>
 
           <BrandButton
-            variant="gold-outline"
+            variant="gold"
             size="default"
             fullWidth
             className="mt-[var(--stack-lg)] sm:w-auto"
-            href="https://assessorarafaela.com.br/"
+            href={RAFAELA_SITE_URL}
             target="_blank"
             rel="noopener noreferrer"
           >

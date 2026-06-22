@@ -2,6 +2,16 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "libertad-ofc",
   "compatibility_date": "2026-06-19",
+  "routes": [
+    {
+      "pattern": "libertadcapital.com.br",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.libertadcapital.com.br",
+      "custom_domain": true
+    }
+  ],
   "assets": {
     "directory": "./out",
     "not_found_handling": "single-page-application"

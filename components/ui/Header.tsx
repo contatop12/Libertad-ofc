@@ -14,8 +14,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { buttonVariants } from "@/components/ui/button";
-import { NAV_LINKS, SITE } from "@/lib/constants";
-import { buildWhatsAppLink, cn, scrollToSection } from "@/lib/utils";
+import { CONTACT_SECTION_HREF, NAV_LINKS, SITE } from "@/lib/constants";
+import { cn, scrollToContactForm, scrollToSection } from "@/lib/utils";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -62,9 +62,11 @@ export function Header() {
 
         <div className="flex items-center gap-3">
           <BrandButton
-            href={buildWhatsAppLink()}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={CONTACT_SECTION_HREF}
+            onClick={(event) => {
+              event.preventDefault();
+              scrollToContactForm();
+            }}
             variant="gold-outline"
             size="default"
             className="hidden sm:inline-flex"
@@ -98,9 +100,12 @@ export function Header() {
                   </button>
                 ))}
                 <BrandButton
-                  href={buildWhatsAppLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={CONTACT_SECTION_HREF}
+                  onClick={(event) => {
+                    event.preventDefault();
+                    setOpen(false);
+                    scrollToContactForm();
+                  }}
                   variant="gold-outline"
                   size="default"
                   fullWidth

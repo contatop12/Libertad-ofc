@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { BrandButton } from "@/components/ui/brand-button";
@@ -17,11 +18,18 @@ import {
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { OBJETIVO_OPTIONS, OFFICES, PATRIMONIO_OPTIONS, SITE } from "@/lib/constants";
+import { DEFAULT_DDI, DDI_OPTIONS, OBJETIVO_OPTIONS, OFFICES, PATRIMONIO_OPTIONS, SITE } from "@/lib/constants";
 import { contactSchema, type ContactFormData } from "@/lib/schemas/contact";
-import { buildWhatsAppLink, buildWhatsAppMessage, cn, formatWhatsApp } from "@/lib/utils";
+import {
+  buildWhatsAppLink,
+  buildWhatsAppMessage,
+  cn,
+  formatPhoneByDdi,
+  submitContactToWebhook,
+} from "@/lib/utils";
 
 export function Formulario() {
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -30,14 +38,27 @@ export function Formulario() {
     formState: { errors, isSubmitting },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    defaultValues: {
+      ddi: DEFAULT_DDI,
+    },
   });
 
   const patrimonio = watch("patrimonio");
   const objetivo = watch("objetivo");
+  const ddi = watch("ddi") ?? DEFAULT_DDI;
 
-  const onSubmit = (data: ContactFormData) => {
-    const message = buildWhatsAppMessage(data);
-    window.open(buildWhatsAppLink(message), "_blank", "noopener,noreferrer");
+  const onSubmit = async (data: ContactFormData) => {
+    setSubmitError(null);
+
+    try {
+      await submitContactToWebhook(data);
+      const message = buildWhatsAppMessage(data);
+      window.open(buildWhatsAppLink(message), "_blank", "noopener,noreferrer");
+    } catch {
+      setSubmitError(
+        "Não foi possível enviar seus dados agora. Tente novamente ou fale conosco pelo WhatsApp.",
+      );
+    }
   };
 
   return (
@@ -129,20 +150,51 @@ export function Formulario() {
                   />
                 </FormField>
 
-                <FormField id="whatsapp" label="WhatsApp (com DDD)" error={errors.whatsapp?.message}>
-                  <Input
-                    id="whatsapp"
-                    type="tel"
-                    placeholder="(11) 99999-9999"
-                    autoComplete="tel"
-                    className={formControlClass}
-                    aria-invalid={!!errors.whatsapp}
-                    {...register("whatsapp", {
-                      onChange: (e) => {
-                        e.target.value = formatWhatsApp(e.target.value);
-                      },
-                    })}
-                  />
+                <FormField
+                  id="whatsapp"
+                  label="WhatsApp"
+                  error={errors.whatsapp?.message ?? errors.ddi?.message}
+                >
+                  <div className="flex gap-2">
+                    <Select
+                      value={ddi}
+                      onValueChange={(value) => {
+                        setValue("ddi", value as ContactFormData["ddi"], { shouldValidate: true });
+                        setValue("whatsapp", "", { shouldValidate: true });
+                      }}
+                    >
+                      <SelectTrigger
+                        className={cn(formControlClass, "w-[6.75rem] shrink-0")}
+                        aria-label="DDI"
+                        aria-invalid={!!errors.ddi}
+                      >
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent alignItemWithTrigger={false} side="bottom" sideOffset={8}>
+                        {DDI_OPTIONS.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+
+                    <Input
+                      id="whatsapp"
+                      type="tel"
+                      inputMode="tel"
+                      placeholder={ddi === "55" ? "(11) 99999-9999" : "999999999"}
+                      autoComplete="tel-national"
+                      className={cn(formControlClass, "min-w-0 flex-1")}
+                      aria-invalid={!!errors.whatsapp}
+                      maxLength={ddi === "55" ? 15 : 15}
+                      {...register("whatsapp", {
+                        onChange: (event) => {
+                          event.target.value = formatPhoneByDdi(event.target.value, ddi);
+                        },
+                      })}
+                    />
+                  </div>
                 </FormField>
 
                 <div className="grid gap-5 sm:grid-cols-2">
@@ -201,12 +253,18 @@ export function Formulario() {
                   disabled={isSubmitting}
                   className="group mt-2 gap-2"
                 >
-                  Solicitar reunião estratégica
+                  {isSubmitting ? "Enviando..." : "Solicitar reunião estratégica"}
                   <ArrowRight
                     className="size-4 transition-transform duration-300 group-hover:translate-x-0.5"
                     aria-hidden
                   />
                 </BrandButton>
+
+                {submitError ? (
+                  <p className="text-center text-[length:var(--text-caption)] leading-relaxed text-red-300" role="alert">
+                    {submitError}
+                  </p>
+                ) : null}
 
                 <p className="text-center text-[length:var(--text-caption)] leading-relaxed text-white/40">
                   Seus dados são tratados com total confidencialidade.

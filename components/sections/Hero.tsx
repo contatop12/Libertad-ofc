@@ -6,8 +6,8 @@ import Image from "next/image";
 
 import { BrandButton } from "@/components/ui/brand-button";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { HERO_IMAGE, SITE } from "@/lib/constants";
-import { buildWhatsAppLink, scrollToSection } from "@/lib/utils";
+import { HERO_IMAGE, CONTACT_SECTION_HREF, HISTORIA_SECTION_HREF, SITE } from "@/lib/constants";
+import { scrollToContactForm, scrollToSection } from "@/lib/utils";
 
 const fadeUp = (delay: number) => ({
   hidden: { opacity: 0, y: 20 },
@@ -68,9 +68,11 @@ export function Hero() {
           className="mt-[var(--stack-xl)] flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4"
         >
           <BrandButton
-            href={buildWhatsAppLink()}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={CONTACT_SECTION_HREF}
+            onClick={(event) => {
+              event.preventDefault();
+              scrollToContactForm();
+            }}
             variant="gold"
             size="lg"
             fullWidth
@@ -79,11 +81,15 @@ export function Hero() {
             Agendar Reunião Estratégica
           </BrandButton>
           <BrandButton
+            href={HISTORIA_SECTION_HREF}
             variant="ghost-white"
             size="lg"
             fullWidth
             className="sm:w-auto sm:min-w-[16rem]"
-            onClick={() => scrollToSection("#sobre-rafaela")}
+            onClick={(event) => {
+              event.preventDefault();
+              scrollToSection(HISTORIA_SECTION_HREF);
+            }}
           >
             Conheça Nossa História
           </BrandButton>

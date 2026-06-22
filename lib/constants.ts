@@ -1,6 +1,6 @@
 export const SITE = {
   name: "Libertad Capital",
-  tagline: "Boutique de estratégia patrimonial",
+  tagline: "Escritório de Investimentos em Indaiatuba credenciado à EQI Investimentos",
   credential: "Escritório credenciado à EQI Investimentos",
   coverage: "Atendemos todo o Brasil",
   whatsapp: "5511988595724",
@@ -27,6 +27,34 @@ export const NAV_LINKS = [
   { label: "Por que a EQI", href: "#eqi" },
   { label: "Depoimentos", href: "#depoimentos" },
   { label: "Contato", href: "#contato" },
+] as const;
+
+export const CONTACT_SECTION_HREF = "#contato" as const;
+export const HISTORIA_SECTION_HREF = "#sobre-rafaela" as const;
+
+export const FOOTER_LINKS = {
+  privacy: "/politica-de-privacidade",
+  terms: "/termos-de-uso",
+  p12Credit: "https://leads.p12digital.com.br/",
+} as const;
+
+export const SOCIAL_LINKS = {
+  instagram: "https://www.instagram.com/rafaela_alvez/",
+  linkedin: "https://www.linkedin.com/in/rafaela-alves-silva/",
+} as const;
+
+export const FORM_WEBHOOK_URL =
+  process.env.NEXT_PUBLIC_FORM_WEBHOOK_URL ??
+  "https://n8n.sitespdoze.com.br/webhook/libertad/form";
+
+export const DEFAULT_DDI = "55" as const;
+
+export const DDI_OPTIONS = [
+  { value: "55", label: "+55", country: "Brasil" },
+  { value: "1", label: "+1", country: "EUA / Canadá" },
+  { value: "351", label: "+351", country: "Portugal" },
+  { value: "44", label: "+44", country: "Reino Unido" },
+  { value: "34", label: "+34", country: "Espanha" },
 ] as const;
 
 export const FOOTER_SOLUTIONS = [
@@ -157,22 +185,81 @@ export const JOURNEY_STEPS = [
 
 export const EQI_TIERS = [
   {
+    id: "advisory",
     title: "Advisory",
     subtitle: "Para investimentos entre",
-    value: "R$ 100 mil e R$ 500 mil",
-    featured: false,
+    value: "R$100mil e R$500mil",
+    description:
+      "Para quem está construindo patrimônio com consistência e quer uma estratégia profissional desde o início.",
+    services: [
+      "Assessor exclusivo",
+      "Acompanhamento dos investimentos",
+      "Suporte operacional de renda variável",
+    ],
+    products: [
+      "Plataforma completa de investimentos",
+      "Criptomoedas",
+      "Eventos online",
+      "Conta internacional",
+    ],
+    ctaLabel: "Quero começar no Advisory",
+    whatsappMessage: "Olá, gostaria de saber mais sobre a Assessoria Advisory.",
   },
   {
+    id: "exclusive",
     title: "Exclusive",
     subtitle: "Para investimentos entre",
-    value: "R$ 500 mil e R$ 5 milhões",
-    featured: true,
+    value: "R$500mil e R$5milhões",
+    description:
+      "Para investidores que já construíram patrimônio relevante e buscam uma estratégia mais sofisticada e personalizada.",
+    services: [
+      "Assessor exclusivo",
+      "Acompanhamento dos investimentos",
+      "Revisão estratégica trimestral",
+      "Especialista de renda variável*",
+      "Especialista de investimento internacional",
+    ],
+    products: [
+      "Plataforma completa de investimentos",
+      "Criptomoedas",
+      "Conta internacional",
+      "Eventos online",
+      "Eventos presenciais",
+      "Planejamento Financeiro",
+    ],
+    ctaLabel: "Quero o atendimento Exclusive",
+    whatsappMessage: "Olá, gostaria de saber mais sobre a Assessoria Exclusive.",
   },
   {
+    id: "private",
     title: "Private",
-    subtitle: "Para investimentos acima de",
-    value: "R$ 5 milhões",
-    featured: false,
+    subtitle: "Para investimentos a partir de",
+    value: "R$5milhões",
+    description:
+      "Para famílias e investidores com patrimônio expressivo que exigem o mais alto nível de atendimento e estratégia.",
+    services: [
+      "Assessor exclusivo",
+      "Time de especialistas private",
+      "Acompanhamento dos investimentos",
+      "Revisão estratégica trimestral",
+      "Especialista de renda variável*",
+      "Especialista de investimento internacional",
+    ],
+    products: [
+      "Plataforma completa de investimentos",
+      "Criptomoedas",
+      "Conta internacional",
+      "Eventos online",
+      "Eventos presenciais",
+      "Acesso ao Wealth Management",
+      "Planejamento Financeiro",
+      "Área exclusiva nos eventos EQI",
+      "Planejamento tributário e suporte na constituição de holdings e offshore",
+      "Consolidação dos investimentos de todas as instituições financeiras",
+      "Prioridade em ofertas exclusivas",
+    ],
+    ctaLabel: "Quero o atendimento Private",
+    whatsappMessage: "Olá, gostaria de saber mais sobre a Assessoria Private.",
   },
 ] as const;
 
@@ -199,13 +286,19 @@ export const APP_SHOWCASE = [
       "+ de 1000 produtos com segurança e autonomia para que você atinja seus objetivos.",
     image: "/images/eqi-investimentos-app.webp",
     imageAlt: "Aplicativo EQI Investimentos exibido em um smartphone",
+    appStoreUrl: "https://apps.apple.com/br/app/eqi-investimentos/id1615444583",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.btg.pactual.eqi.mobile",
   },
   {
-    eyebrow: "App Trade",
+    eyebrow: "App trader",
     title: "Renda variável na palma da sua mão",
     description: "Acesse o EQI Trader para operar de qualquer lugar sem burocracias.",
     image: "/images/eqi-trader-app.webp",
     imageAlt: "Aplicativo EQI Trader exibido em um smartphone",
+    appStoreUrl: "https://apps.apple.com/br/app/eqi-trader/id1606793010",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.btg.pactual.homebroker.mobile.eqi",
   },
 ] as const;
 
@@ -284,6 +377,8 @@ export const FAQ_ITEMS = [
       "Não. A Libertad Capital é um escritório de assessoria de investimentos credenciado à EQI Investimentos. Isso significa que operamos com total independência e liberdade para recomendar as melhores estratégias para cada cliente, sem conflito de interesse.",
   },
 ] as const;
+
+export const RAFAELA_SITE_URL = "https://assessorarafaela.com.br/" as const;
 
 export const RAFAELA_CREDENTIALS = ["CEA", "CPA-20", "Ancord", "Profissional Destaque"] as const;
 

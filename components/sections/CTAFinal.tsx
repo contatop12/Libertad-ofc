@@ -2,7 +2,7 @@ import { BrandButton } from "@/components/ui/brand-button";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { buildWhatsAppLink } from "@/lib/utils";
+import { CONTACT_SECTION_HREF } from "@/lib/constants";
 
 export function CTAFinal() {
   return (
@@ -14,9 +14,7 @@ export function CTAFinal() {
           subtitle="Dê o primeiro passo. Uma conversa pode mudar a forma como você cuida do que construiu."
         />
         <BrandButton
-          href={buildWhatsAppLink()}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={CONTACT_SECTION_HREF}
           variant="gold"
           size="lg"
           fullWidth
