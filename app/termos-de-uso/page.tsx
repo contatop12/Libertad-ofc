@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 
 import { Footer } from "@/components/ui/Footer";
@@ -5,6 +6,19 @@ import { Header } from "@/components/ui/Header";
 import { SITE } from "@/lib/constants";
 
 export const dynamic = "force-static";
+
+export const metadata: Metadata = {
+  title: "Termos de Uso | Libertad Capital",
+  description:
+    "Termos de uso do site da Libertad Capital. Conteúdo informativo sobre assessoria de investimentos credenciada à EQI Investimentos.",
+  alternates: {
+    canonical: `${SITE.url}/termos-de-uso`,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function TermosDeUsoPage() {
   return (

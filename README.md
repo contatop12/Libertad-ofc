@@ -42,7 +42,7 @@ Coloque os arquivos em `public/images/`:
 
 | Arquivo | Descrição |
 |---------|-----------|
-| `logo-libertad-eqi.png` | Logo combinada Libertad + EQI (header e footer) |
+| `logo-libertad-capital-eqi.png` | Logo combinada Libertad + EQI (header e footer) |
 | `rafaela-alves.jpg` | Foto profissional da Rafaela Alves |
 | `og-libertad.jpg` | Imagem Open Graph (1200×630 recomendado) |
 

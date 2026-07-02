@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { DM_Sans, Sora } from "next/font/google";
 
 import { JsonLd } from "@/components/ui/JsonLd";
+import { CookieConsent } from "@/components/ui/CookieConsent";
 import { SITE } from "@/lib/constants";
+import { SITE_SEO } from "@/lib/seo";
 
 import "./globals.css";
 
@@ -20,10 +22,6 @@ const sora = Sora({
   weight: ["500", "600", "700"],
 });
 
-const title = "Libertad Capital | Assessoria Patrimonial em Indaiatuba | Credenciada EQI Investimentos";
-const description =
-  "Boutique de estratégia patrimonial em Indaiatuba-SP. Atendimento exclusivo para investidores de alta renda. Escritório credenciado à EQI Investimentos. Agende sua reunião.";
-
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -32,50 +30,36 @@ export const viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title,
-  description,
-  keywords: [
-    "assessoria de investimentos indaiatuba",
-    "assessor de investimentos indaiatuba",
-    "planejamento patrimonial indaiatuba",
-    "investimentos indaiatuba",
-    "wealth management interior de são paulo",
-    "consultoria patrimonial são paulo",
-    "eqi indaiatuba",
-    "escritório credenciado eqi",
-    "investidor alta renda são paulo",
-    "proteção patrimonial",
-    "planejamento sucessório",
-    "family office interior de são paulo",
-    "investimentos para empresários",
-    "gestão patrimonial",
-    "wealth advisory são paulo",
-  ],
+  title: SITE_SEO.title,
+  description: SITE_SEO.description,
+  keywords: [...SITE_SEO.keywords],
+  alternates: {
+    canonical: SITE.url,
+  },
   openGraph: {
-    title,
-    description,
+    title: SITE_SEO.title,
+    description: SITE_SEO.description,
     url: SITE.url,
     siteName: SITE.name,
     locale: "pt_BR",
     type: "website",
-    images: [
-      {
-        url: "/images/og-libertad.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Libertad Capital — Assessoria Patrimonial credenciada à EQI Investimentos",
-      },
-    ],
+    images: [SITE_SEO.ogImage],
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
-    images: ["/images/og-libertad.jpg"],
+    title: SITE_SEO.title,
+    description: SITE_SEO.description,
+    images: [SITE_SEO.ogImage.url],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
@@ -93,6 +77,7 @@ export default function RootLayout({
       <body className={`${dmSans.variable} ${sora.variable} font-body antialiased`}>
         <JsonLd />
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

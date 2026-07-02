@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -18,7 +19,7 @@ import {
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SectionReveal } from "@/components/ui/SectionReveal";
-import { DEFAULT_DDI, DDI_OPTIONS, OBJETIVO_OPTIONS, OFFICES, PATRIMONIO_OPTIONS, SITE } from "@/lib/constants";
+import { DEFAULT_DDI, DDI_OPTIONS, FOOTER_LINKS, OBJETIVO_OPTIONS, OFFICES, PATRIMONIO_OPTIONS, SITE } from "@/lib/constants";
 import { contactSchema, type ContactFormData } from "@/lib/schemas/contact";
 import {
   buildWhatsAppLink,
@@ -267,7 +268,16 @@ export function Formulario() {
                 ) : null}
 
                 <p className="text-center text-[length:var(--text-caption)] leading-relaxed text-white/40">
-                  Seus dados são tratados com total confidencialidade.
+                  Seus dados são tratados com total confidencialidade conforme nossa{" "}
+                  <Link
+                    href={FOOTER_LINKS.privacy}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/60 underline-offset-2 hover:text-libertad-gold hover:underline"
+                  >
+                    Política de Privacidade
+                  </Link>
+                  .
                   <br className="hidden sm:block" /> Não compartilhamos informações com terceiros.
                 </p>
               </form>
