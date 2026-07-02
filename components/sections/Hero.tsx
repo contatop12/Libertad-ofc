@@ -35,7 +35,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-libertad-green/82" />
       <div className="absolute inset-0 bg-gradient-to-t from-libertad-green-deep/70 via-transparent to-libertad-green/35" />
 
-      <div className="relative z-10 mx-auto max-w-[var(--content-max-wide)] px-[var(--container-px)] py-16 sm:py-24 lg:py-28">
+      <div className="relative z-10 mx-auto max-w-[var(--hero-content-max)] px-[var(--container-px)] py-16 sm:py-24 lg:py-28">
         <motion.div initial="hidden" animate="visible" variants={fadeUp(0)} className="text-center">
           <Eyebrow variant="pill" tone="dark">
             {SITE.credential}
@@ -55,7 +55,7 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           variants={fadeUp(0.24)}
-          className="type-subtitle mx-auto mt-[var(--stack-md)] max-w-[var(--content-max)] text-center text-white/78 text-balance sm:mt-[var(--stack-lg)]"
+          className="type-subtitle mx-auto mt-[var(--stack-md)] max-w-[var(--hero-content-max)] text-center text-white/78 text-balance sm:mt-[var(--stack-lg)]"
         >
           A Libertad Capital, escritório credenciado à EQI Investimentos, atende investidores que buscam
           estratégia, proteção patrimonial e acesso às melhores oportunidades do mercado.

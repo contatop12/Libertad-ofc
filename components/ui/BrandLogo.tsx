@@ -14,12 +14,12 @@ type BrandLogoProps = {
 
 const logoSizes = {
   header: {
-    className: "h-9 w-[126px] sm:h-10 sm:w-[140px] lg:h-11 lg:w-[154px]",
-    sizes: "(max-width: 640px) 126px, (max-width: 1024px) 140px, 154px",
+    className: "h-11 w-[154px] sm:h-12 sm:w-[168px] lg:h-14 lg:w-[196px]",
+    sizes: "(max-width: 640px) 154px, (max-width: 1024px) 168px, 196px",
   },
   footer: {
-    className: "h-10 w-[140px] sm:h-11 sm:w-[154px] lg:h-12 lg:w-[168px]",
-    sizes: "(max-width: 640px) 140px, (max-width: 1024px) 154px, 168px",
+    className: "h-12 w-[168px] sm:h-14 sm:w-[196px] lg:h-16 lg:w-[224px]",
+    sizes: "(max-width: 640px) 168px, (max-width: 1024px) 196px, 224px",
   },
 } as const;
 

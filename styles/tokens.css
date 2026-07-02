@@ -73,6 +73,7 @@
   --container-px: clamp(1.25rem, 5vw, 2rem);
   --content-max: 36rem;
   --content-max-wide: 42rem;
+  --hero-content-max: 72.5rem;
 
   /* Radius */
   --radius-sm: 0.375rem;
