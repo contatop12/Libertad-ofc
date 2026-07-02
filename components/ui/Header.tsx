@@ -42,7 +42,7 @@ export function Header() {
           : "border-b border-transparent bg-libertad-green/85 backdrop-blur-md",
       )}
     >
-      <div className="mx-auto flex h-14 max-w-[var(--container-max)] items-center justify-between gap-3 px-[var(--container-px)] sm:h-16 sm:gap-4">
+      <div className="mx-auto flex h-[var(--header-height)] max-w-[var(--container-max)] items-center justify-between gap-3 px-[var(--container-px)] sm:gap-4">
         <Link href="#inicio" onClick={() => scrollToSection("#inicio")} aria-label="Ir para o início">
           <BrandLogo variant="header" />
         </Link>

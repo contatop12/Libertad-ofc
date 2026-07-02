@@ -22,7 +22,7 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden pt-16"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden pt-[var(--header-height)]"
     >
       <Image
         src={HERO_IMAGE}
