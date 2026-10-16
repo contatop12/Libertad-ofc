@@ -58,7 +58,8 @@ export function Hero() {
           className="type-subtitle mx-auto mt-[var(--stack-md)] max-w-[var(--hero-content-max)] text-center text-white/78 text-balance sm:mt-[var(--stack-lg)]"
         >
           A Libertad Capital, escritório credenciado à EQI Investimentos, atende investidores que buscam
-          estratégia, proteção patrimonial e acesso às melhores oportunidades do mercado.
+          atendimento personalizado e acesso a diferentes oportunidades de investimento disponíveis por meio da
+          plataforma EQI.
         </motion.p>
 
         <motion.div

@@ -1,6 +1,6 @@
 # Libertad Capital — Site Institucional
 
-Boutique de estratégia patrimonial credenciada à EQI Investimentos. Site institucional premium construído com Next.js 15.
+Escritório de investimentos credenciado à EQI Investimentos. Site institucional premium construído com Next.js 15.
 
 ## Stack
 

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { BrandButton } from "@/components/ui/brand-button";
 import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "@/lib/brand-icons";
-import { CONTACT_SECTION_HREF, FOOTER_LINKS, FOOTER_SOLUTIONS, NAV_LINKS, OFFICES, SITE, SOCIAL_LINKS } from "@/lib/constants";
+import { CONTACT_SECTION_HREF, EQI_OMBUDSMAN, FOOTER_LINKS, FOOTER_SOLUTIONS, NAV_LINKS, OFFICES, SITE, SOCIAL_LINKS } from "@/lib/constants";
 import { buildWhatsAppLink } from "@/lib/utils";
 
 const socialLinkClass =
@@ -93,6 +93,39 @@ export function Footer() {
             <BrandButton href={CONTACT_SECTION_HREF} variant="gold" size="default" className="mt-6">
               Agendar Reunião
             </BrandButton>
+          </div>
+        </div>
+
+        <div className="mt-10 border-t border-white/10 pt-8">
+          <h3 className="font-heading text-lg font-semibold">{EQI_OMBUDSMAN.title}</h3>
+          <div className="mt-4 flex flex-col gap-2 text-[length:var(--text-body-sm)] text-white/70 sm:max-w-xl">
+            <p>
+              Telefone:{" "}
+              <a
+                href={`tel:${EQI_OMBUDSMAN.phoneTel}`}
+                className="transition-colors hover:text-libertad-gold"
+              >
+                {EQI_OMBUDSMAN.phoneDisplay}
+              </a>
+            </p>
+            <p>
+              E-mail:{" "}
+              <a
+                href={`mailto:${EQI_OMBUDSMAN.email}`}
+                className="transition-colors hover:text-libertad-gold"
+              >
+                {EQI_OMBUDSMAN.email}
+              </a>
+            </p>
+            <p>Horário de atendimento: {EQI_OMBUDSMAN.hours}</p>
+            <a
+              href={EQI_OMBUDSMAN.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 w-fit font-medium text-libertad-gold transition-colors hover:text-libertad-gold-light"
+            >
+              {EQI_OMBUDSMAN.linkLabel}
+            </a>
           </div>
         </div>
 

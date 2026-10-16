@@ -1,6 +1,6 @@
 # Libertad Capital
 
-> Escritório de Investimentos em Indaiatuba credenciado à EQI Investimentos. Assessoria patrimonial para investidores de alta renda.
+> Escritório de Investimentos em Indaiatuba credenciado à EQI Investimentos. Atua na distribuição de produtos de investimento por meio da plataforma EQI.
 
 ## Páginas principais
 
@@ -9,10 +9,10 @@
 - [Política de Privacidade](https://libertadcapital.com.br/politica-de-privacidade): tratamento de dados e cookies
 - [Termos de Uso](https://libertadcapital.com.br/termos-de-uso): condições de uso do site
 
-## Serviços
+## Atuação
 
-- Assessoria patrimonial e de investimentos
-- Planejamento financeiro e sucessório
+- Assessoria de investimentos
+- Acompanhamento de investimentos alinhado a objetivos e perfil do investidor
 - Acesso à plataforma EQI Investimentos (Advisory, Exclusive e Private)
 
 ## Localização

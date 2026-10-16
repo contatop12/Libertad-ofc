@@ -36,7 +36,7 @@ export default function TermosDeUsoPage() {
           <div className="mt-8 flex max-w-3xl flex-col gap-4 type-body text-libertad-text-medium">
             <p>
               Ao acessar o site da {SITE.name}, você concorda com estes termos. O conteúdo disponível
-              tem caráter informativo e não constitui recomendação personalizada de investimento.
+              tem caráter informativo e não constitui orientação personalizada de investimento.
             </p>
             <p>
               As informações sobre produtos, rentabilidade e estratégias podem ser alteradas sem aviso

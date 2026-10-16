@@ -11,7 +11,7 @@ export function CTAFinal() {
         <SectionHeader
           tone="dark"
           title="Seu patrimônio merece uma estratégia à altura da sua trajetória."
-          subtitle="Dê o primeiro passo. Uma conversa pode mudar a forma como você cuida do que construiu."
+          subtitle="Dê o primeiro passo. Uma conversa pode mudar a forma como você acompanha seus investimentos."
         />
         <BrandButton
           href={CONTACT_SECTION_HREF}

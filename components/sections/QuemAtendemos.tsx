@@ -12,7 +12,7 @@ export function QuemAtendemos() {
         <SectionHeader
           tone="dark"
           title="Patrimônio exige estratégia personalizada"
-          subtitle="Atendemos investidores que buscam mais do que rentabilidade — buscam um parceiro estratégico para construir, proteger e perpetuar seu patrimônio."
+          subtitle="Atendemos investidores que buscam mais do que rentabilidade — buscam acompanhamento próximo para tomar decisões de investimento alinhadas aos seus objetivos e horizonte de longo prazo."
         />
       </SectionReveal>
 

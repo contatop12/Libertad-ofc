@@ -13,7 +13,7 @@ export function SolucoesPatrimoniais() {
       <SectionReveal>
         <SectionHeader
           title="Como ajudamos nossos clientes"
-          subtitle="Não vendemos produtos. Construímos estratégias patrimoniais personalizadas para cada momento da sua vida."
+          subtitle="Não vendemos produtos. Acompanhamos seus investimentos de forma personalizada, alinhada aos seus objetivos e perfil."
         />
       </SectionReveal>
 

@@ -38,8 +38,18 @@ export const FOOTER_LINKS = {
   p12Credit: "https://leads.p12digital.com.br/",
 } as const;
 
+export const EQI_OMBUDSMAN = {
+  title: "Ouvidoria",
+  phoneDisplay: "0800-770-0190",
+  phoneTel: "08007700190",
+  email: "ouvidoria@eqi.com.br",
+  hours: "Segunda a sexta-feira, exceto feriados, das 9h às 17h.",
+  linkLabel: "Acesse nossa Ouvidoria",
+  url: "https://ajuda.eqi.com.br/s/ouvidoria",
+} as const;
+
 export const SOCIAL_LINKS = {
-  instagram: "https://www.instagram.com/rafaela_alvez/",
+  instagram: "https://www.instagram.com/rafaela_alves_assessora_/",
   linkedin: "https://www.linkedin.com/in/rafaela-alves-silva/",
 } as const;
 
@@ -58,10 +68,10 @@ export const DDI_OPTIONS = [
 ] as const;
 
 export const FOOTER_SOLUTIONS = [
-  { label: "Preservação Patrimonial", href: "#solucoes" },
-  { label: "Crescimento Patrimonial", href: "#solucoes" },
+  { label: "Acompanhamento de Carteira", href: "#solucoes" },
+  { label: "Evolução dos Investimentos", href: "#solucoes" },
   { label: "Diversificação Global", href: "#solucoes" },
-  { label: "Planejamento Sucessório", href: "#solucoes" },
+  { label: "Acompanhamento de Investimentos", href: "#solucoes" },
   { label: "Mercado de Capitais", href: "#solucoes" },
 ] as const;
 
@@ -76,45 +86,45 @@ export const AUDIENCE_CARDS = [
   {
     icon: "briefcase" as const,
     title: "Empresários",
-    text: "Estratégias para empresários que buscam separar e proteger o patrimônio pessoal do empresarial.",
+    text: "Atendimento a empresários que buscam organizar seus investimentos de acordo com seus objetivos, perfil e horizonte de longo prazo.",
   },
   {
     icon: "trending-up" as const,
     title: "Executivos",
-    text: "Planejamento patrimonial para executivos em fase de acumulação e transição de carreira.",
+    text: "Acompanhamento de investimentos para executivos em diferentes momentos da carreira e da construção de patrimônio.",
   },
   {
     icon: "award" as const,
     title: "Profissionais Liberais",
-    text: "Médicos, advogados e especialistas que precisam de estratégia para o patrimônio construído.",
+    text: "Médicos, advogados e especialistas que buscam acompanhamento de investimentos alinhado aos seus objetivos.",
   },
   {
     icon: "home" as const,
     title: "Famílias Patrimonializadas",
-    text: "Planejamento sucessório e proteção patrimonial para famílias com visão de longo prazo.",
+    text: "Acompanhamento de famílias que buscam organizar seus investimentos com visão de longo prazo.",
   },
   {
     icon: "bar-chart-2" as const,
     title: "Investidores Sofisticados",
-    text: "Acesso a estratégias e produtos diferenciados para investidores qualificados e experientes.",
+    text: "Acesso a produtos diferenciados da plataforma EQI para investidores qualificados e experientes.",
   },
   {
-    icon: "shield" as const,
-    title: "Sucessão Patrimonial",
-    text: "Estruturação de sucessão para garantir a perpetuação do patrimônio familiar.",
+    icon: "activity" as const,
+    title: "Acompanhamento de Investimentos",
+    text: "Atendimento próximo para acompanhar a evolução dos investimentos e as mudanças de objetivos ao longo do tempo.",
   },
 ] as const;
 
 export const SOLUTIONS_CARDS = [
   {
     icon: "shield-check" as const,
-    title: "Preservação Patrimonial",
-    text: "Proteção do patrimônio construído ao longo de décadas, com estratégias de baixo risco e alta eficiência.",
+    title: "Acompanhamento de Carteira",
+    text: "Acompanhamento dos investimentos considerando objetivos, horizonte de tempo e perfil do investidor.",
   },
   {
     icon: "trending-up" as const,
-    title: "Crescimento Patrimonial",
-    text: "Estratégias para expansão patrimonial sustentável, alinhadas ao seu perfil e horizonte de tempo.",
+    title: "Evolução dos Investimentos",
+    text: "Acesso a alternativas de investimento alinhadas ao seu perfil, objetivos e horizonte de tempo.",
   },
   {
     icon: "globe" as const,
@@ -123,8 +133,8 @@ export const SOLUTIONS_CARDS = [
   },
   {
     icon: "users" as const,
-    title: "Planejamento Sucessório",
-    text: "Estruturas para perpetuação e transferência eficiente do patrimônio familiar entre gerações.",
+    title: "Acompanhamento de Investimentos",
+    text: "Atendimento próximo para acompanhar a evolução dos investimentos e as mudanças de objetivos ao longo do tempo.",
   },
   {
     icon: "bar-chart" as const,
@@ -134,7 +144,7 @@ export const SOLUTIONS_CARDS = [
   {
     icon: "layers" as const,
     title: "Investimentos Alternativos",
-    text: "Acesso a estratégias diferenciadas em IA, clean tech, robótica e outros ativos alternativos via plataforma EQI.",
+    text: "Acesso a produtos diferenciados em IA, clean tech, robótica e outros ativos alternativos via plataforma EQI.",
   },
 ] as const;
 
@@ -147,9 +157,9 @@ export const DIFFERENTIALS = {
     "Relacionamento reativo",
   ],
   libertad: [
-    "Recomendação alinhada com seus objetivos",
-    "Estratégias personalizadas e monitoramento contínuo",
-    "Parceria para crescimento patrimonial sustentável",
+    "Atendimento alinhado aos seus objetivos e perfil de investidor",
+    "Acompanhamento personalizado e monitoramento contínuo",
+    "Parceria para acompanhar seus investimentos com visão de longo prazo",
     "Você entende onde está investindo e por quê",
     "Relacionamento proativo e antecipativo",
   ],
@@ -164,7 +174,7 @@ export const JOURNEY_STEPS = [
   {
     icon: "map" as const,
     title: "Estratégia",
-    text: "Construção de um plano patrimonial personalizado e alinhado ao seu perfil.",
+    text: "Apresentação de alternativas de investimento considerando seus objetivos e perfil.",
   },
   {
     icon: "check-circle" as const,
@@ -267,7 +277,7 @@ export const EQI_FEATURES = [
   "Taxa zero de custódia",
   "Plataforma BTG Pactual",
   "EQI Research própria",
-  "Câmbio, seguros e crédito",
+  "Crédito",
   "Atendimento humano",
 ] as const;
 
@@ -283,7 +293,7 @@ export const APP_SHOWCASE = [
     eyebrow: "Conheça nosso app",
     title: "Baixe o app da EQI Investimentos",
     description:
-      "+ de 1000 produtos com segurança e autonomia para que você atinja seus objetivos.",
+      "+ de 1000 produtos com autonomia para que você acompanhe seus objetivos.",
     image: "/images/eqi-investimentos-app.webp",
     imageAlt: "Aplicativo EQI Investimentos exibido em um smartphone",
     appStoreUrl: "https://apps.apple.com/br/app/eqi-investimentos/id1615444583",
@@ -337,9 +347,9 @@ export const PATRIMONIO_OPTIONS = [
 ] as const;
 
 export const OBJETIVO_OPTIONS = [
-  { value: "protecao", label: "Proteção patrimonial" },
+  { value: "protecao", label: "Organizar meus investimentos" },
   { value: "melhoria", label: "Melhoria da carteira atual" },
-  { value: "sucessao", label: "Planejamento sucessório" },
+  { value: "sucessao", label: "Investimentos com visão de longo prazo" },
   { value: "internacional", label: "Diversificação internacional" },
   { value: "aposentadoria", label: "Aposentadoria confortável" },
   { value: "outro", label: "Outro" },
@@ -349,32 +359,32 @@ export const FAQ_ITEMS = [
   {
     question: "O que é necessário para começar?",
     answer:
-      "Basta entrar em contato pelo formulário ou WhatsApp. Nossa equipe irá agendar uma conversa inicial para entender seus objetivos e apresentar as melhores estratégias para o seu perfil.",
+      "Basta entrar em contato pelo formulário ou WhatsApp. Nossa equipe irá agendar uma conversa inicial para entender seus objetivos, perfil e momento financeiro.",
   },
   {
-    question: "Quais os benefícios de ter a Libertad como parceira patrimonial?",
+    question: "Quais os benefícios de ter a Libertad como escritório de investimentos?",
     answer:
-      "A Libertad une o atendimento próximo e personalizado de uma boutique patrimonial com a estrutura e solidez da EQI Investimentos — uma das maiores plataformas independentes do Brasil, com o BTG Pactual como custodiante. Você tem acesso a mais de 1.000 oportunidades de investimento, com uma estratégia construída exclusivamente para o seu perfil.",
+      "A Libertad une atendimento próximo e personalizado à estrutura da EQI Investimentos — uma das maiores plataformas independentes do Brasil, com o BTG Pactual como custodiante. Você acompanha seus investimentos com acesso a mais de 1.000 oportunidades disponíveis na plataforma EQI.",
   },
   {
-    question: "Como funciona a assessoria?",
+    question: "Como funciona a assessoria de investimentos?",
     answer:
-      "A assessoria funciona de forma personalizada. Iniciamos com um diagnóstico completo do seu patrimônio e objetivos, construímos uma estratégia sob medida, implementamos as melhores soluções disponíveis e acompanhamos continuamente com revisões periódicas.",
+      "A assessoria funciona de forma personalizada. Iniciamos com um diagnóstico dos seus objetivos e perfil, apresentamos alternativas disponíveis na plataforma EQI e acompanhamos continuamente com revisões periódicas.",
   },
   {
     question: "Atendem Pessoa Física e Pessoa Jurídica?",
     answer:
-      "Sim. Atendemos tanto Pessoa Física quanto Empresas, adaptando as estratégias às necessidades específicas de cada perfil — seja para proteção patrimonial pessoal, planejamento sucessório familiar ou gestão de recursos empresariais.",
+      "Sim. Atendemos tanto Pessoa Física quanto Empresas, com acompanhamento de investimentos alinhado aos objetivos, perfil e horizonte de cada cliente.",
   },
   {
     question: "Qual o valor mínimo para começar?",
     answer:
-      "Atendemos investidores a partir de R$ 300 mil em patrimônio financeiro. Para estratégias mais sofisticadas, como acesso ao segmento Private, o mínimo é de R$ 5 milhões.",
+      "Atendemos investidores a partir de R$ 300 mil em patrimônio financeiro. Para acesso ao segmento Private da plataforma EQI, o mínimo é de R$ 5 milhões.",
   },
   {
     question: "A Libertad é uma corretora ou banco?",
     answer:
-      "Não. A Libertad Capital é um escritório de assessoria de investimentos credenciado à EQI Investimentos. Isso significa que operamos com total independência e liberdade para recomendar as melhores estratégias para cada cliente, sem conflito de interesse.",
+      "Não. A Libertad Capital é um escritório credenciado à EQI Investimentos que atua na distribuição de produtos de investimento por meio da plataforma EQI. O atendimento é próximo, personalizado e alinhado ao perfil de cada investidor.",
   },
 ] as const;
 

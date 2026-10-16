@@ -128,7 +128,7 @@ export function PlataformaEQI() {
           title={
             <>
               <span className="text-libertad-green">Uma plataforma completa</span>{" "}
-              <span className="text-libertad-text-dark">para cada estratégia patrimonial</span>
+              <span className="text-libertad-text-dark">para cada perfil de investidor</span>
             </>
           }
           subtitle="Acesso a mais de 1.000 oportunidades de investimento nacionais e internacionais, com a solidez do BTG Pactual como custodiante."

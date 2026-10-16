@@ -16,7 +16,7 @@ export function JornadaCliente() {
   return (
     <Section tone="light">
       <SectionReveal>
-        <SectionHeader title="Sua jornada patrimonial com a Libertad" />
+        <SectionHeader title="Sua jornada de investimentos com a Libertad" />
       </SectionReveal>
 
       <div ref={ref} className="mt-[var(--section-gap)]">

@@ -122,7 +122,7 @@ export function Formulario() {
 
               <div className="mb-[var(--stack-lg)] flex items-start justify-between gap-3">
                 <h3 className="font-heading max-w-sm text-[length:var(--text-display-md)] font-semibold leading-[var(--leading-snug)] tracking-tight text-white text-balance">
-                  Converse com um especialista patrimonial
+                  Converse com um assessor de investimentos
                 </h3>
                 <ShieldCheck className="mt-1 size-5 shrink-0 text-libertad-gold/60" aria-hidden />
               </div>

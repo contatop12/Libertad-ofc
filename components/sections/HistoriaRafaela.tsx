@@ -43,7 +43,7 @@ export function HistoriaRafaela() {
                 Rafaela Alves
               </a>{" "}
               construiu sua trajetória passando por instituições de prestígio, acumulando mais de R$ 500
-              milhões gerenciados ao longo da carreira e atendendo investidores em todo o Brasil com soluções
+              milhões acompanhados ao longo da carreira e atendendo investidores em todo o Brasil com soluções
               para o mercado local e internacional.
             </p>
             <p>
@@ -53,8 +53,8 @@ export function HistoriaRafaela() {
             </p>
             <p>
               Foi dessa visão que nasceu a Libertad Capital. Um escritório onde cada cliente é tratado como
-              único, cada estratégia é construída sob medida e cada decisão é tomada com o patrimônio do
-              cliente como prioridade absoluta.
+              único, o atendimento é personalizado e cada decisão considera os objetivos e o perfil do
+              investidor.
             </p>
           </div>
 
