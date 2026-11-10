@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { DDI_OPTIONS, OBJETIVO_OPTIONS, PATRIMONIO_OPTIONS } from "@/lib/constants";
+import { normalizeBrazilPhoneDigits } from "@/lib/utils";
 
 const patrimonioValues = PATRIMONIO_OPTIONS.map((o) => o.value) as [
   string,
@@ -12,7 +13,8 @@ const objetivoValues = OBJETIVO_OPTIONS.map((o) => o.value) as [
 ];
 const ddiValues = DDI_OPTIONS.map((o) => o.value) as [string, ...string[]];
 
-const brazilPhoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/;
+// DDD (sem zero) + celular com 9 dígitos ou fixo com 8 dígitos
+const brazilPhoneDigitsRegex = /^[1-9]{2}(9\d{8}|\d{8})$/;
 
 export const contactSchema = z
   .object({
@@ -31,7 +33,7 @@ export const contactSchema = z
   })
   .superRefine((data, ctx) => {
     if (data.ddi === "55") {
-      if (!brazilPhoneRegex.test(data.whatsapp)) {
+      if (!brazilPhoneDigitsRegex.test(normalizeBrazilPhoneDigits(data.whatsapp))) {
         ctx.addIssue({
           code: "custom",
           message: "Informe um WhatsApp válido com DDD",

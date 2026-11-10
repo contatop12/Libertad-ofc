@@ -8,13 +8,23 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function formatBrazilPhone(value: string): string {
-  const digits = value.replace(/\D/g, "").slice(0, 11);
-  if (digits.length <= 2) return digits.length ? `(${digits}` : "";
-  if (digits.length <= 7) {
-    return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+/** Remove DDI 55 e zeros à esquerda vindos de autocompletar/colar (ex: "+55 11 9...", "011 9..."). */
+export function normalizeBrazilPhoneDigits(value: string): string {
+  let digits = value.replace(/\D/g, "").replace(/^0+/, "");
+  if ((digits.length === 12 || digits.length === 13) && digits.startsWith("55")) {
+    digits = digits.slice(2);
   }
-  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+  return digits.slice(0, 11);
+}
+
+export function formatBrazilPhone(value: string): string {
+  const digits = normalizeBrazilPhoneDigits(value);
+  if (digits.length <= 2) return digits.length ? `(${digits}` : "";
+  const ddd = digits.slice(0, 2);
+  const local = digits.slice(2);
+  if (local.length <= 4) return `(${ddd}) ${local}`;
+  if (local.length <= 8) return `(${ddd}) ${local.slice(0, 4)}-${local.slice(4)}`;
+  return `(${ddd}) ${local.slice(0, 5)}-${local.slice(5)}`;
 }
 
 export function formatInternationalPhone(value: string): string {

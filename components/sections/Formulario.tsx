@@ -158,6 +158,7 @@ export function Formulario() {
                 >
                   <div className="flex gap-2">
                     <Select
+                      items={DDI_OPTIONS}
                       value={ddi}
                       onValueChange={(value) => {
                         setValue("ddi", value as ContactFormData["ddi"], { shouldValidate: true });
@@ -188,8 +189,9 @@ export function Formulario() {
                       autoComplete="tel-national"
                       className={cn(formControlClass, "min-w-0 flex-1")}
                       aria-invalid={!!errors.whatsapp}
-                      maxLength={ddi === "55" ? 15 : 15}
                       {...register("whatsapp", {
+                        // Guarda o valor formatado (autocompletar/colar chegam crus de uma vez)
+                        setValueAs: (value: string) => formatPhoneByDdi(value ?? "", ddi),
                         onChange: (event) => {
                           event.target.value = formatPhoneByDdi(event.target.value, ddi);
                         },
@@ -201,6 +203,7 @@ export function Formulario() {
                 <div className="grid gap-5 sm:grid-cols-2">
                   <FormField label="Patrimônio aproximado" error={errors.patrimonio?.message}>
                     <Select
+                      items={PATRIMONIO_OPTIONS}
                       value={patrimonio}
                       onValueChange={(v) =>
                         setValue("patrimonio", v as ContactFormData["patrimonio"], { shouldValidate: true })
@@ -224,6 +227,7 @@ export function Formulario() {
 
                   <FormField label="Objetivo principal" error={errors.objetivo?.message}>
                     <Select
+                      items={OBJETIVO_OPTIONS}
                       value={objetivo}
                       onValueChange={(v) =>
                         setValue("objetivo", v as ContactFormData["objetivo"], { shouldValidate: true })
