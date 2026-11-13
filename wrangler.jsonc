@@ -1,6 +1,8 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "libertad-ofc",
+  // Worker do blog do Rankeando (worker/): recebimento dos posts, páginas /blog e sitemap. O site continua exportado em ./out.
+  "main": "./worker/index.ts",
   "compatibility_date": "2026-06-19",
   "routes": [
     {
@@ -14,8 +16,20 @@
   ],
   "assets": {
     "directory": "./out",
-    "not_found_handling": "single-page-application"
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    // Só estas rotas passam pelo Worker; todas as outras seguem direto para os arquivos de ./out, como antes.
+    "run_worker_first": ["/blog", "/blog/*", "/api/p12/*", "/sitemap.xml"]
   },
+  // Posts e categorias do Rankeando (migrations/: npx wrangler d1 migrations apply libertad-blog --remote). Contrato: CONTRATO.md do pacote do Rankeando.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "libertad-blog",
+      "database_id": "1fd0ea9d-a416-4f94-ad85-20748048ab45",
+      "migrations_dir": "migrations"
+    }
+  ],
   "observability": {
     "enabled": true
   }

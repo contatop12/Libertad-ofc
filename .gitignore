@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# types gerados pelo wrangler (npm run check:worker)
+/worker/worker-configuration.d.ts
+/.wrangler/
