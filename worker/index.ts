@@ -1,6 +1,7 @@
 // Worker do site Libertad Capital. O site em si é exportado (Next, output: "export") e servido como arquivos estáticos (binding ASSETS);
 // este Worker só roda para as rotas listadas em `run_worker_first` (wrangler.jsonc): o recebimento dos posts do Rankeando (/api/p12/webhook),
-// as páginas do blog (/blog...) e o /sitemap.xml com os posts. Qualquer outra rota nem chega aqui.
+// as páginas do blog (/blog...), o /sitemap.xml com os posts e os vídeos (/videos/..., por causa do Range). Qualquer outra rota nem chega aqui.
+import { tratarVideo } from './midia';
 import { segredoDoRankeando } from './p12/assinatura';
 import { tratarBlog, tratarSitemap } from './p12/blog';
 import { WEBHOOK_PATH } from './p12/site';
@@ -24,6 +25,7 @@ export default {
     if (pathname.startsWith('/api/p12/')) return Response.json({ ok: false, error: 'not_found' }, { status: 404, headers: { 'cache-control': 'no-store' } });
     if (pathname === '/sitemap.xml') return tratarSitemap(request, env, new D1Store(env.DB));
     if (pathname === '/blog' || pathname.startsWith('/blog/')) return tratarBlog(request, env, new D1Store(env.DB));
+    if (pathname.startsWith('/videos/')) return tratarVideo(request, env);
     // Rota que não deveria chegar aqui: entrega o arquivo do site.
     return env.ASSETS.fetch(request);
   },
