@@ -392,5 +392,9 @@ export const RAFAELA_SITE_URL = "https://assessorarafaela.com.br/" as const;
 
 export const RAFAELA_CREDENTIALS = ["CEA", "CPA-20", "Ancord", "Profissional Destaque"] as const;
 
-export const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80";
+// Vídeo provisório (vertical 720x1280): mesmo arquivo no desktop e no mobile até chegar a versão horizontal
+export const HERO_MEDIA = {
+  videoDesktop: "/videos/hero-libertad.mp4",
+  videoMobile: "/videos/hero-libertad.mp4",
+  poster: "/images/hero-poster.webp",
+} as const;

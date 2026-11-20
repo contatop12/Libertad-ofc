@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 import { BrandButton } from "@/components/ui/brand-button";
 import { Eyebrow } from "@/components/ui/eyebrow";
-import { HERO_IMAGE, CONTACT_SECTION_HREF, HISTORIA_SECTION_HREF, SITE } from "@/lib/constants";
+import { HERO_MEDIA, CONTACT_SECTION_HREF, HISTORIA_SECTION_HREF, SITE } from "@/lib/constants";
 import { scrollToContactForm, scrollToSection } from "@/lib/utils";
 
 const fadeUp = (delay: number) => ({
@@ -19,20 +19,37 @@ const fadeUp = (delay: number) => ({
 });
 
 export function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    // Reforço do autoplay: garante `muted` (exigido por iOS/Chrome) e tenta de novo após a hidratação
+    video.muted = true;
+    video.play().catch(() => {});
+  }, []);
+
   return (
     <section
       id="inicio"
-      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden pt-[var(--header-height)]"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-libertad-green-deep pt-[var(--header-height)]"
     >
-      <Image
-        src={HERO_IMAGE}
-        alt="Skyline urbano premium"
-        fill
-        priority
-        className="object-cover"
-        sizes="100vw"
-      />
-      <div className="absolute inset-0 bg-libertad-green/82" />
+      <video
+        ref={videoRef}
+        className="absolute inset-0 size-full object-cover"
+        poster={HERO_MEDIA.poster}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        disablePictureInPicture
+        aria-hidden
+      >
+        <source media="(min-width: 768px)" src={HERO_MEDIA.videoDesktop} type="video/mp4" />
+        <source src={HERO_MEDIA.videoMobile} type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-libertad-green/72" />
       <div className="absolute inset-0 bg-gradient-to-t from-libertad-green-deep/70 via-transparent to-libertad-green/35" />
 
       <div className="relative z-10 mx-auto max-w-[var(--hero-content-max)] px-[var(--container-px)] py-16 sm:py-24 lg:py-28">
