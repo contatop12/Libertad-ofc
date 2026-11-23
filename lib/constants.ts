@@ -396,5 +396,7 @@ export const RAFAELA_CREDENTIALS = ["CEA", "CPA-20", "Ancord", "Profissional Des
 export const HERO_MEDIA = {
   videoDesktop: "/videos/hero-libertad.mp4",
   videoMobile: "/videos/hero-libertad.mp4",
-  poster: "/images/hero-poster.webp",
+  // Fundo estático (skyline): aparece antes do vídeo e continua por baixo dele
+  imageDesktop: "/images/hero-skyline.webp",
+  imageMobile: "/images/hero-skyline-mobile.webp",
 } as const;

@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { BrandButton } from "@/components/ui/brand-button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { HERO_MEDIA, CONTACT_SECTION_HREF, HISTORIA_SECTION_HREF, SITE } from "@/lib/constants";
-import { scrollToContactForm, scrollToSection } from "@/lib/utils";
+import { cn, scrollToContactForm, scrollToSection } from "@/lib/utils";
 
 const fadeUp = (delay: number) => ({
   hidden: { opacity: 0, y: 20 },
@@ -18,37 +18,81 @@ const fadeUp = (delay: number) => ({
   },
 });
 
+const DESKTOP_QUERY = "(min-width: 768px)";
+const PRIMEIRA_INTERACAO = ["pointerdown", "touchstart", "scroll", "keydown"] as const;
+const TOQUE = ["touchend", "click"] as const;
+
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [videoTocando, setVideoTocando] = useState(false);
+
+  // Desktop: o vídeo carrega logo após a hidratação. Mobile: só depois da primeira interação (até lá fica a imagem estática).
+  useEffect(() => {
+    if (window.matchMedia(DESKTOP_QUERY).matches) {
+      setVideoSrc(HERO_MEDIA.videoDesktop);
+      return;
+    }
+    const remover = () => PRIMEIRA_INTERACAO.forEach((evento) => window.removeEventListener(evento, ativar));
+    const ativar = () => {
+      setVideoSrc(HERO_MEDIA.videoMobile);
+      remover();
+    };
+    PRIMEIRA_INTERACAO.forEach((evento) => window.addEventListener(evento, ativar, { passive: true }));
+    return remover;
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    // Reforço do autoplay: garante `muted` (exigido por iOS/Chrome) e tenta de novo após a hidratação
     video.muted = true;
-    video.play().catch(() => {});
-  }, []);
+    const tocar = () => {
+      video.play().catch(() => {});
+    };
+    tocar();
+    // iOS em modo de pouca energia só libera o play dentro de um toque: tenta de novo a cada toque até o vídeo começar
+    const remover = () => TOQUE.forEach((evento) => window.removeEventListener(evento, tocar));
+    TOQUE.forEach((evento) => window.addEventListener(evento, tocar, { passive: true }));
+    video.addEventListener("playing", remover, { once: true });
+    return () => {
+      remover();
+      video.removeEventListener("playing", remover);
+    };
+  }, [videoSrc]);
 
   return (
     <section
       id="inicio"
       className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-libertad-green-deep pt-[var(--header-height)]"
     >
-      <video
-        ref={videoRef}
-        className="absolute inset-0 size-full object-cover"
-        poster={HERO_MEDIA.poster}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        disablePictureInPicture
-        aria-hidden
-      >
-        <source media="(min-width: 768px)" src={HERO_MEDIA.videoDesktop} type="video/mp4" />
-        <source src={HERO_MEDIA.videoMobile} type="video/mp4" />
-      </video>
+      <picture>
+        <source media={DESKTOP_QUERY} srcSet={HERO_MEDIA.imageDesktop} type="image/webp" />
+        <img
+          src={HERO_MEDIA.imageMobile}
+          alt=""
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 size-full object-cover"
+        />
+      </picture>
+      {videoSrc ? (
+        <video
+          ref={videoRef}
+          src={videoSrc}
+          className={cn(
+            "absolute inset-0 size-full object-cover transition-opacity duration-700",
+            videoTocando ? "opacity-100" : "opacity-0",
+          )}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          disablePictureInPicture
+          aria-hidden
+          onPlaying={() => setVideoTocando(true)}
+        />
+      ) : null}
       <div className="absolute inset-0 bg-libertad-green/72" />
       <div className="absolute inset-0 bg-gradient-to-t from-libertad-green-deep/70 via-transparent to-libertad-green/35" />
 
