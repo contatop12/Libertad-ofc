@@ -1,28 +1,23 @@
 "use client";
 
-import { m } from "framer-motion";
-import { ChevronDown } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { m, useMotionValue, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef, useState, type PointerEvent } from "react";
 
 import { BrandButton } from "@/components/ui/brand-button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { HERO_MEDIA, CONTACT_SECTION_HREF, HISTORIA_SECTION_HREF, SITE } from "@/lib/constants";
+import { useFinePointer } from "@/lib/use-fine-pointer";
 import { cn, scrollToContactForm, scrollToSection } from "@/lib/utils";
-
-const fadeUp = (delay: number) => ({
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { delay, duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
-  },
-});
 
 const DESKTOP_QUERY = "(min-width: 768px)";
 const PRIMEIRA_INTERACAO = ["pointerdown", "touchstart", "scroll", "keydown"] as const;
 const TOQUE = ["touchend", "click"] as const;
+// Deslocamento máximo do fundo seguindo o mouse (px); a camada tem sangria maior que isso para nunca mostrar borda.
+const PROFUNDIDADE_MOUSE = 12;
+const NEXT_SECTION_HREF = "#eqi-stats";
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [videoTocando, setVideoTocando] = useState(false);
@@ -60,11 +55,40 @@ export function Hero() {
     };
   }, [videoSrc]);
 
+  // Profundidade: o fundo rola mais devagar que a página e o texto sobe e some ao sair da tela.
+  const reduzirMovimento = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+  const fundoY = useTransform(scrollYProgress, [0, 1], reduzirMovimento ? ["0%", "0%"] : ["0%", "18%"]);
+  const fundoEscala = useTransform(scrollYProgress, [0, 1], reduzirMovimento ? [1, 1] : [1, 1.08]);
+  const conteudoY = useTransform(scrollYProgress, [0, 1], reduzirMovimento ? ["0%", "0%"] : ["0%", "-8%"]);
+  // Intervalo inteiro [0, 1]: o Framer acelera isso com ViewTimeline nativo, e um intervalo parcial voltava a subir depois do fim.
+  const conteudoOpacidade = useTransform(scrollYProgress, [0, 1], reduzirMovimento ? [1, 1] : [1, 0]);
+
+  // Com mouse, o fundo acompanha o cursor de leve (só ponteiro fino e sem "reduzir movimento").
+  const mouseLigado = useFinePointer();
+  const mouseX = useSpring(useMotionValue(0), { stiffness: 60, damping: 20 });
+  const mouseY = useSpring(useMotionValue(0), { stiffness: 60, damping: 20 });
+  const moverFundo = (event: PointerEvent<HTMLElement>) => {
+    if (!mouseLigado || event.pointerType !== "mouse") return;
+    const area = event.currentTarget.getBoundingClientRect();
+    mouseX.set(-((event.clientX - area.left) / area.width - 0.5) * 2 * PROFUNDIDADE_MOUSE);
+    mouseY.set(-((event.clientY - area.top) / area.height - 0.5) * 2 * PROFUNDIDADE_MOUSE);
+  };
+  const soltarFundo = () => {
+    mouseX.set(0);
+    mouseY.set(0);
+  };
+
   return (
     <section
+      ref={sectionRef}
       id="inicio"
+      onPointerMove={moverFundo}
+      onPointerLeave={soltarFundo}
       className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden bg-libertad-green-deep pt-[var(--header-height)]"
     >
+      <m.div className="absolute inset-0" style={{ y: fundoY, scale: fundoEscala }} aria-hidden>
+        <m.div className="absolute -inset-4" style={{ x: mouseX, y: mouseY }}>
       <picture>
         <source media={DESKTOP_QUERY} srcSet={HERO_MEDIA.imageDesktop} type="image/webp" />
         <img
@@ -93,41 +117,47 @@ export function Hero() {
           onPlaying={() => setVideoTocando(true)}
         />
       ) : null}
+        </m.div>
+      </m.div>
       <div className="absolute inset-0 bg-libertad-green/72" />
       <div className="absolute inset-0 bg-gradient-to-t from-libertad-green-deep/70 via-transparent to-libertad-green/35" />
 
-      <div className="relative z-10 mx-auto max-w-[var(--hero-content-max)] px-[var(--container-px)] py-16 sm:py-24 lg:py-28">
-        <m.div initial="hidden" animate="visible" variants={fadeUp(0)} className="text-center">
+      {/* Brilho dourado lento atrás do título */}
+      <div
+        aria-hidden
+        className="hero-glow pointer-events-none absolute left-1/2 top-1/2 size-[min(90vw,720px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--libertad-gold)_16%,transparent),transparent_65%)]"
+      />
+
+      {/* Entrada em CSS: o texto aparece no primeiro quadro, sem esperar o JavaScript (é o maior elemento da tela). */}
+      <m.div
+        style={{ y: conteudoY, opacity: conteudoOpacidade }}
+        className="relative z-10 mx-auto max-w-[var(--hero-content-max)] px-[var(--container-px)] py-16 sm:py-24 lg:py-28"
+      >
+        <div className="hero-enter text-center">
           <Eyebrow variant="pill" tone="dark">
             {SITE.credential}
           </Eyebrow>
-        </m.div>
+        </div>
 
-        <m.h1
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp(0.12)}
-          className="font-heading mt-[var(--stack-lg)] text-center text-[length:var(--text-display-hero)] font-semibold leading-[var(--leading-tight)] tracking-tight text-white text-balance"
+        <h1
+          className="hero-enter font-heading mt-[var(--stack-lg)] text-center text-[length:var(--text-display-hero)] font-semibold leading-[var(--leading-tight)] tracking-tight text-white text-balance"
+          style={{ animationDelay: "0.08s" }}
         >
           Grandes patrimônios exigem decisões à altura.
-        </m.h1>
+        </h1>
 
-        <m.p
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp(0.24)}
-          className="type-subtitle mx-auto mt-[var(--stack-md)] max-w-[var(--hero-content-max)] text-center text-white/78 text-balance sm:mt-[var(--stack-lg)]"
+        <p
+          className="hero-enter type-subtitle mx-auto mt-[var(--stack-md)] max-w-[var(--hero-content-max)] text-center text-white/78 text-balance sm:mt-[var(--stack-lg)]"
+          style={{ animationDelay: "0.16s" }}
         >
           A Libertad Capital, escritório credenciado à EQI Investimentos, atende investidores que buscam
           atendimento personalizado e acesso a diferentes oportunidades de investimento disponíveis por meio da
           plataforma EQI.
-        </m.p>
+        </p>
 
-        <m.div
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp(0.36)}
-          className="mt-[var(--stack-xl)] flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4"
+        <div
+          className="hero-enter mt-[var(--stack-xl)] flex flex-col gap-3 sm:flex-row sm:justify-center sm:gap-4"
+          style={{ animationDelay: "0.24s" }}
         >
           <BrandButton
             href={CONTACT_SECTION_HREF}
@@ -155,18 +185,24 @@ export function Hero() {
           >
             Conheça Nossa História
           </BrandButton>
-        </m.div>
-      </div>
-
-      <m.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        className="absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 sm:block"
-        aria-hidden
-      >
-        <ChevronDown className="size-7 animate-bounce text-white/40" />
+        </div>
       </m.div>
+
+      {/* Indicador de rolagem: contorno de mouse com um ponto dourado descendo; leva à próxima seção. */}
+      <a
+        href={NEXT_SECTION_HREF}
+        aria-label="Rolar para o conteúdo"
+        onClick={(event) => {
+          event.preventDefault();
+          scrollToSection(NEXT_SECTION_HREF);
+        }}
+        className="hero-enter absolute bottom-6 left-1/2 z-10 hidden -translate-x-1/2 rounded-full p-2 text-white/45 transition-colors hover:text-libertad-gold focus-visible:outline-libertad-gold sm:block"
+        style={{ animationDelay: "0.6s" }}
+      >
+        <span className="flex h-10 w-6 justify-center rounded-full border border-current pt-2">
+          <span className="hero-scroll-dot size-1.5 rounded-full bg-libertad-gold" />
+        </span>
+      </a>
     </section>
   );
 }

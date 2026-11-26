@@ -186,6 +186,58 @@
     opacity: 0.35;
   }
 
+  /* Abertura: entrada em CSS (não espera o JavaScript), brilho dourado lento e o ponto do indicador de rolagem.
+     A entrada sobe e ganha foco sem mexer na opacidade: o texto (maior elemento da tela, o LCP) conta já no primeiro
+     quadro. Com "reduzir movimento", a regra global acima zera as durações e tudo fica no estado final. */
+  .hero-enter {
+    animation: hero-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-glow {
+    animation: hero-glow 14s ease-in-out infinite alternate;
+  }
+
+  .hero-scroll-dot {
+    animation: hero-scroll-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes hero-enter {
+    from {
+      transform: translateY(14px);
+      filter: blur(6px);
+    }
+    to {
+      transform: none;
+      filter: none;
+    }
+  }
+
+  @keyframes hero-glow {
+    from {
+      transform: translate(-6%, 4%) scale(0.92);
+      opacity: 0.7;
+    }
+    to {
+      transform: translate(6%, -4%) scale(1.08);
+      opacity: 1;
+    }
+  }
+
+  @keyframes hero-scroll-dot {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    70% {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+  }
+
   @keyframes pulse-soft {
     0%,
     100% {
