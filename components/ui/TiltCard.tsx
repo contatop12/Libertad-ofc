@@ -55,7 +55,7 @@ export function TiltCard({ children, className }: { children: ReactNode; classNa
       <span
         ref={luzRef}
         aria-hidden
-        className="pointer-events-none absolute inset-0 rounded-[var(--radius-lg)] bg-[radial-gradient(320px_circle_at_var(--x)_var(--y),color-mix(in_srgb,var(--libertad-gold)_12%,transparent),transparent_65%)] opacity-0 transition-opacity duration-300"
+        className="pointer-events-none absolute inset-0 rounded-[var(--radius-lg)] bg-[radial-gradient(320px_circle_at_var(--x)_var(--y),rgb(201_168_76/0.12),transparent_65%)] opacity-0 transition-opacity duration-300"
       />
     </m.div>
   );

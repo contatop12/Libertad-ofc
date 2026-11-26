@@ -125,7 +125,7 @@ export function Hero() {
       {/* Brilho dourado lento atrás do título */}
       <div
         aria-hidden
-        className="hero-glow pointer-events-none absolute left-1/2 top-1/2 size-[min(90vw,720px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--libertad-gold)_16%,transparent),transparent_65%)]"
+        className="hero-glow pointer-events-none absolute left-1/2 top-1/2 size-[min(90vw,720px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(201_168_76/0.16),transparent_65%)]"
       />
 
       {/* Entrada em CSS: o texto aparece no primeiro quadro, sem esperar o JavaScript (é o maior elemento da tela). */}

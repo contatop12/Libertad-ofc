@@ -51,7 +51,7 @@ export function CursorSpotlight({ className }: { className?: string }) {
       aria-hidden
       className={cn(
         "pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-500",
-        "bg-[radial-gradient(600px_circle_at_var(--x)_var(--y),color-mix(in_srgb,var(--libertad-gold)_10%,transparent),transparent_60%)]",
+        "bg-[radial-gradient(600px_circle_at_var(--x)_var(--y),rgb(201_168_76/0.10),transparent_60%)]",
         className,
       )}
     />

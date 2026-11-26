@@ -58,7 +58,7 @@ function Etapa({ index, title, text, icon, progresso, visivel, reduzirMovimento 
         <m.span
           aria-hidden
           style={{ opacity: acesa }}
-          className="pointer-events-none absolute inset-0 rounded-full shadow-[0_0_0_4px_color-mix(in_srgb,var(--libertad-gold)_22%,transparent),0_6px_18px_color-mix(in_srgb,var(--libertad-gold)_45%,transparent)]"
+          className="pointer-events-none absolute inset-0 rounded-full shadow-[0_0_0_4px_rgb(201_168_76/0.22),0_6px_18px_rgb(201_168_76/0.45)]"
         />
         <span className="font-heading text-sm font-semibold leading-none text-libertad-text-dark">{index + 1}</span>
         <Icon className="size-4 shrink-0 text-libertad-text-dark" strokeWidth={1.75} aria-hidden />

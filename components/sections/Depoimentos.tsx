@@ -98,6 +98,8 @@ export function Depoimentos() {
             aria-label="Depoimento anterior"
             className={cn(
               brandButtonVariants({ variant: "ghost-dark", size: "sm" }),
+              // Botão simples, sem as camadas do BrandButton: o fundo de hover vem daqui.
+              "hover:bg-libertad-green",
               "size-11 rounded-full p-0",
             )}
           >
@@ -125,6 +127,8 @@ export function Depoimentos() {
             aria-label="Próximo depoimento"
             className={cn(
               brandButtonVariants({ variant: "ghost-dark", size: "sm" }),
+              // Botão simples, sem as camadas do BrandButton: o fundo de hover vem daqui.
+              "hover:bg-libertad-green",
               "size-11 rounded-full p-0",
             )}
           >

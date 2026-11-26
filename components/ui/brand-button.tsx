@@ -34,6 +34,7 @@ const brandButtonVariants = cva(
         "ghost-dark": [
           "border-libertad-green/35 bg-libertad-off-white text-libertad-green",
           "hover:border-libertad-green hover:text-white hover:shadow-[var(--shadow-md)]",
+          "focus-visible:border-libertad-green focus-visible:text-white",
           "focus-visible:outline-libertad-green",
         ].join(" "),
         light: [
