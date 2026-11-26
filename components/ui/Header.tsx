@@ -1,5 +1,6 @@
 "use client";
 
+import { m, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -28,6 +29,12 @@ export function Header() {
   const isHome = pathname === "/";
   // Seção escolhida no menu mobile: só é aberta depois que o menu termina de fechar e solta a trava de rolagem.
   const pendingSection = useRef<string | null>(null);
+
+  // Barra dourada de progresso de leitura na base do cabeçalho (mola suave; direta com "reduzir movimento").
+  const { scrollYProgress } = useScroll();
+  const reduzirMovimento = useReducedMotion();
+  const progressoSuave = useSpring(scrollYProgress, { stiffness: 140, damping: 30, restDelta: 0.001 });
+  const progresso = reduzirMovimento ? scrollYProgress : progressoSuave;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -144,6 +151,12 @@ export function Header() {
         </div>
       </div>
       <span className="sr-only">{SITE.credential}</span>
+      <m.div
+        data-reading-progress
+        aria-hidden
+        style={{ scaleX: progresso }}
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 origin-left bg-libertad-gold"
+      />
     </header>
   );
 }
