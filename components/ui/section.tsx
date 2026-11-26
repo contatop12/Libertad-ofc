@@ -1,3 +1,4 @@
+import { CursorSpotlight } from "@/components/ui/CursorSpotlight";
 import { cn } from "@/lib/utils";
 
 type SectionTone = "light" | "muted" | "dark" | "black" | "gradient";
@@ -25,11 +26,15 @@ export function Section({
   containerClassName,
   children,
 }: SectionProps) {
+  // Seções verdes ganham a luz que segue o cursor (só com mouse); `isolate` a mantém atrás do conteúdo.
+  const comLuz = tone === "dark" || tone === "gradient";
+
   return (
     <section
       id={id}
-      className={cn("py-[var(--section-py)]", toneStyles[tone], className)}
+      className={cn("py-[var(--section-py)]", comLuz && "relative isolate", toneStyles[tone], className)}
     >
+      {comLuz ? <CursorSpotlight /> : null}
       <div
         className={cn(
           "mx-auto w-full max-w-[var(--container-max)] px-[var(--container-px)]",

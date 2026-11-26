@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 
+import { TiltCard } from "@/components/ui/TiltCard";
 import { cn } from "@/lib/utils";
 
 type FeatureCardTone = "light" | "dark";
@@ -22,6 +23,7 @@ export function FeatureCard({
   const isDark = tone === "dark";
 
   return (
+    <TiltCard className="h-full">
     <div
       className={cn(
         "group flex h-full flex-col rounded-[var(--radius-lg)] p-5 transition-[border-color,box-shadow] duration-[var(--duration-normal)] sm:p-6 lg:p-7",
@@ -53,5 +55,6 @@ export function FeatureCard({
         {description}
       </p>
     </div>
+    </TiltCard>
   );
 }
