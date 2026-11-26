@@ -3,6 +3,7 @@ import { DM_Sans, Sora } from "next/font/google";
 
 import { JsonLd } from "@/components/ui/JsonLd";
 import { CookieConsent } from "@/components/ui/CookieConsent";
+import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/ui/GoogleTagManager";
 import { SITE } from "@/lib/constants";
 import { SITE_SEO } from "@/lib/seo";
 
@@ -75,9 +76,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${dmSans.variable} ${sora.variable} font-body antialiased`}>
+        <GoogleTagManagerNoScript />
         <JsonLd />
         {children}
         <CookieConsent />
+        <GoogleTagManager />
       </body>
     </html>
   );

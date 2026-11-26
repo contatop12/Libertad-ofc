@@ -56,6 +56,11 @@ export default function PoliticaDePrivacidadePage() {
               identificam você diretamente e não são utilizados para publicidade.
             </p>
             <p>
+              Também usamos o Google Analytics, carregado pelo Google Tag Manager, para medir a audiência
+              do site: páginas visitadas, origem do acesso e interações. Essa medição usa cookies do Google
+              Analytics, gera dados estatísticos e não é utilizada para publicidade.
+            </p>
+            <p>
               Ao clicar em &quot;Aceitar cookies&quot; no aviso exibido na primeira visita, você concorda com
               o uso dessas tecnologias conforme descrito nesta política. Você pode remover as preferências
               salvas a qualquer momento limpando os dados de navegação do seu navegador.

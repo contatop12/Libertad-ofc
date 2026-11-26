@@ -50,7 +50,8 @@ export function CookieConsent() {
             className="mt-1 text-[length:var(--text-caption)] leading-relaxed text-white/75"
           >
             Usamos cookies essenciais para garantir o funcionamento do site e armazenar suas preferências
-            de navegação. Ao continuar, você concorda com nossa{" "}
+            de navegação, e cookies de medição de audiência (Google Analytics) para entender como o site é
+            usado. Ao continuar, você concorda com nossa{" "}
             <Link
               href={FOOTER_LINKS.privacy}
               target="_blank"
