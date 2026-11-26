@@ -8,7 +8,7 @@ import type { Cartao } from './store';
 import { dataLonga, esc, jsonScript, readingMinutes } from './texto';
 
 export const POR_PAGINA = 9;
-const LOGO = '/images/logo-libertad-capital-eqi.png';
+const LOGO = '/images/logo-libertad-capital-eqi.webp';
 const OG_PADRAO = `${SITE_URL}/images/og-libertad.jpg`;
 
 const NAV = [

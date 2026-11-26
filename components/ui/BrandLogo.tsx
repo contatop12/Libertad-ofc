@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-const LOGO_PATH = "/images/logo-libertad-capital-eqi.png";
+const LOGO_PATH = "/images/logo-libertad-capital-eqi.webp";
 const LOGO_ALT = "Libertad Capital — Escritório credenciado à EQI Investimentos";
 
 type BrandLogoProps = {
