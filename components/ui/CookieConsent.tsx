@@ -4,23 +4,37 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { FOOTER_LINKS } from "@/lib/constants";
+import {
+  CONSENT_ACCEPTED,
+  CONSENT_DENIED,
+  clearTrackingCookies,
+  readConsent,
+  storeConsent,
+} from "@/lib/cookie-consent";
 import { cn } from "@/lib/utils";
-
-const CONSENT_STORAGE_KEY = "libertad-cookie-consent";
 
 export function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
-    if (!stored) {
+    if (!readConsent()) {
       setVisible(true);
     }
   }, []);
 
   const acceptCookies = () => {
-    localStorage.setItem(CONSENT_STORAGE_KEY, "accepted");
+    storeConsent(CONSENT_ACCEPTED);
     setVisible(false);
+  };
+
+  // Recusar desliga a medição: guarda a recusa, apaga os cookies já gravados e recarrega a página,
+  // porque o Google Tag Manager já carregado só sai dela assim. Com a recusa guardada, ele não volta.
+  const declineCookies = () => {
+    const stored = storeConsent(CONSENT_DENIED);
+    clearTrackingCookies();
+    setVisible(false);
+    const gtmLoaded = document.querySelector('script[src*="googletagmanager.com/gtm.js"]');
+    if (stored && gtmLoaded) window.location.reload();
   };
 
   if (!visible) {
@@ -77,6 +91,18 @@ export function CookieConsent() {
             )}
           >
             Aceitar cookies
+          </button>
+          <button
+            type="button"
+            onClick={declineCookies}
+            className={cn(
+              "inline-flex min-h-[var(--btn-height-sm)] items-center justify-center px-2",
+              "text-[length:var(--text-caption)] text-white/70 underline underline-offset-2",
+              "transition-colors duration-200 hover:text-white",
+              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-libertad-gold",
+            )}
+          >
+            Recusar
           </button>
         </div>
       </div>

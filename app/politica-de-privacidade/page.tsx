@@ -61,9 +61,11 @@ export default function PoliticaDePrivacidadePage() {
               Analytics, gera dados estatísticos e não é utilizada para publicidade.
             </p>
             <p>
-              Ao clicar em &quot;Aceitar cookies&quot; no aviso exibido na primeira visita, você concorda com
-              o uso dessas tecnologias conforme descrito nesta política. Você pode remover as preferências
-              salvas a qualquer momento limpando os dados de navegação do seu navegador.
+              A medição fica ativa desde a primeira visita. Ao clicar em &quot;Aceitar cookies&quot; no aviso,
+              você concorda com o uso dessas tecnologias conforme descrito nesta política. Ao clicar em
+              &quot;Recusar&quot;, a medição é desligada neste navegador e os cookies do Google Analytics já
+              gravados são apagados. Você pode remover as preferências salvas a qualquer momento limpando
+              os dados de navegação do seu navegador.
             </p>
 
             <h2 className="type-title-sm mt-4 text-libertad-text-dark">Seus direitos</h2>
