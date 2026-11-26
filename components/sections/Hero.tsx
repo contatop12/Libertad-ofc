@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -97,22 +97,22 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-t from-libertad-green-deep/70 via-transparent to-libertad-green/35" />
 
       <div className="relative z-10 mx-auto max-w-[var(--hero-content-max)] px-[var(--container-px)] py-16 sm:py-24 lg:py-28">
-        <motion.div initial="hidden" animate="visible" variants={fadeUp(0)} className="text-center">
+        <m.div initial="hidden" animate="visible" variants={fadeUp(0)} className="text-center">
           <Eyebrow variant="pill" tone="dark">
             {SITE.credential}
           </Eyebrow>
-        </motion.div>
+        </m.div>
 
-        <motion.h1
+        <m.h1
           initial="hidden"
           animate="visible"
           variants={fadeUp(0.12)}
           className="font-heading mt-[var(--stack-lg)] text-center text-[length:var(--text-display-hero)] font-semibold leading-[var(--leading-tight)] tracking-tight text-white text-balance"
         >
           Grandes patrimônios exigem decisões à altura.
-        </motion.h1>
+        </m.h1>
 
-        <motion.p
+        <m.p
           initial="hidden"
           animate="visible"
           variants={fadeUp(0.24)}
@@ -121,9 +121,9 @@ export function Hero() {
           A Libertad Capital, escritório credenciado à EQI Investimentos, atende investidores que buscam
           atendimento personalizado e acesso a diferentes oportunidades de investimento disponíveis por meio da
           plataforma EQI.
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           initial="hidden"
           animate="visible"
           variants={fadeUp(0.36)}
@@ -155,10 +155,10 @@ export function Hero() {
           >
             Conheça Nossa História
           </BrandButton>
-        </motion.div>
+        </m.div>
       </div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.8 }}
@@ -166,7 +166,7 @@ export function Hero() {
         aria-hidden
       >
         <ChevronDown className="size-7 animate-bounce text-white/40" />
-      </motion.div>
+      </m.div>
     </section>
   );
 }

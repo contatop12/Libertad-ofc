@@ -1,4 +1,5 @@
-import { z } from "zod";
+// zod/mini: mesma validação com uma fração do tamanho do zod completo (o formulário fica no fim da página).
+import * as z from "zod/mini";
 
 import { DDI_OPTIONS, OBJETIVO_OPTIONS, PATRIMONIO_OPTIONS } from "@/lib/constants";
 import { normalizeBrazilPhoneDigits } from "@/lib/utils";
@@ -18,20 +19,14 @@ const brazilPhoneDigitsRegex = /^[1-9]{2}(9\d{8}|\d{8})$/;
 
 export const contactSchema = z
   .object({
-    nome: z.string().min(2, "Informe seu nome completo"),
-    email: z.string().email("Informe um e-mail válido"),
-    ddi: z.enum(ddiValues, {
-      message: "Selecione o DDI",
-    }),
-    whatsapp: z.string().min(1, "Informe seu WhatsApp"),
-    patrimonio: z.enum(patrimonioValues, {
-      message: "Selecione seu patrimônio",
-    }),
-    objetivo: z.enum(objetivoValues, {
-      message: "Selecione seu objetivo",
-    }),
+    nome: z.string().check(z.minLength(2, "Informe seu nome completo")),
+    email: z.email("Informe um e-mail válido"),
+    ddi: z.enum(ddiValues, "Selecione o DDI"),
+    whatsapp: z.string().check(z.minLength(1, "Informe seu WhatsApp")),
+    patrimonio: z.enum(patrimonioValues, "Selecione seu patrimônio"),
+    objetivo: z.enum(objetivoValues, "Selecione seu objetivo"),
   })
-  .superRefine((data, ctx) => {
+  .check(z.superRefine((data, ctx) => {
     if (data.ddi === "55") {
       if (!brazilPhoneDigitsRegex.test(normalizeBrazilPhoneDigits(data.whatsapp))) {
         ctx.addIssue({
@@ -51,6 +46,6 @@ export const contactSchema = z
         path: ["whatsapp"],
       });
     }
-  });
+  }));
 
 export type ContactFormData = z.infer<typeof contactSchema>;

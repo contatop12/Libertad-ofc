@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -68,7 +68,7 @@ export function Depoimentos() {
         <div className="grid gap-6 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {padded.map((testimonial) => (
-              <motion.div
+              <m.div
                 key={`${testimonial.name}-${current}`}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -86,7 +86,7 @@ export function Depoimentos() {
                   </div>
                   <span className="font-medium text-libertad-text-dark">{testimonial.name}</span>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </AnimatePresence>
         </div>

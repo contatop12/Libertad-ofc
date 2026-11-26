@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { useRef } from "react";
 
 import { Section } from "@/components/ui/section";
@@ -24,7 +24,7 @@ export function JornadaCliente() {
           {JOURNEY_STEPS.map((step, index) => {
             const Icon = getIcon(step.icon);
             return (
-              <motion.div
+              <m.div
                 key={step.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -47,7 +47,7 @@ export function JornadaCliente() {
                 <p className="type-caption mt-[var(--stack-xs)] max-w-xs text-libertad-text-medium">
                   {step.text}
                 </p>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>

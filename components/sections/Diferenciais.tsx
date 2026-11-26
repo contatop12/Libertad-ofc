@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m, useInView } from "framer-motion";
 import { Check, ThumbsDown, ThumbsUp, X } from "lucide-react";
 import { useRef } from "react";
 
@@ -23,7 +23,7 @@ export function Diferenciais() {
       </SectionReveal>
 
       <div ref={ref} className="mt-[var(--section-gap)] grid gap-5 lg:grid-cols-2 lg:gap-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: -24 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -43,9 +43,9 @@ export function Diferenciais() {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: 24 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
@@ -65,7 +65,7 @@ export function Diferenciais() {
               </li>
             ))}
           </ul>
-        </motion.div>
+        </m.div>
       </div>
     </Section>
   );
