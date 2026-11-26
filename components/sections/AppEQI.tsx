@@ -87,9 +87,11 @@ export function AppEQI() {
                 <Image
                   src={app.image}
                   alt={app.imageAlt}
-                  width={280}
-                  height={560}
-                  className="h-auto w-full max-w-[160px] object-contain sm:max-w-[175px] lg:max-w-[195px]"
+                  width={427}
+                  height={860}
+                  // Largura fixa e proporção no CSS: com "w-full" num contêiner de largura automática a imagem nascia 0x0
+                  // e empurrava o layout ao carregar
+                  className="aspect-[427/860] h-auto w-[160px] max-w-full object-contain sm:w-[175px] lg:w-[195px]"
                 />
               </div>
             </article>

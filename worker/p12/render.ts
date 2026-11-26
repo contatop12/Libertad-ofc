@@ -116,13 +116,25 @@ img.rankeando-assinatura__foto{flex:none;width:88px;height:88px;border-radius:99
 .lb-cookie p{margin:0;font-size:var(--text-caption,.75rem);line-height:1.6;color:rgb(255 255 255/.75)}
 .lb-cookie strong{display:block;margin-bottom:.25rem;font-size:var(--text-body-sm,.875rem);color:#fff}
 .lb-cookie a{color:var(--libertad-gold,#c9a84c)}
-.lb-cookie button{flex:none;min-height:2.5rem;padding:0 1.25rem;border:0;border-radius:var(--radius-md,.5rem);background:var(--btn-gradient-gold,#c9a84c);color:var(--libertad-text-dark,#1a1a1a);font-weight:600;cursor:pointer}
-@media(min-width:640px){.lb-cookie__in{flex-direction:row;align-items:center;justify-content:space-between}}
+.lb-cookie__acoes{display:flex;flex:none;flex-direction:column;gap:.5rem}
+.lb-cookie button{min-height:2.5rem;padding:0 1.25rem;border:0;border-radius:var(--radius-md,.5rem);background:var(--btn-gradient-gold,#c9a84c);color:var(--libertad-text-dark,#1a1a1a);font-weight:600;cursor:pointer}
+.lb-cookie button.lb-cookie__recusar{padding:0 .5rem;background:none;color:rgb(255 255 255/.7);font-size:var(--text-caption,.75rem);font-weight:400;text-decoration:underline;text-underline-offset:2px}
+.lb-cookie button.lb-cookie__recusar:hover{color:#fff}
+@media(min-width:640px){.lb-cookie__in{flex-direction:row;align-items:center;justify-content:space-between}.lb-cookie__acoes{flex-direction:row;align-items:center}}
 `;
 
-/** Aviso de cookies igual ao do resto do site (mesma chave no localStorage: quem já aceitou não vê de novo). */
-const COOKIE = `<div class="lb-cookie" id="lb-cookie" role="dialog" aria-labelledby="lb-cookie-t"><div class="lb-cookie__in"><div><strong id="lb-cookie-t">Utilizamos cookies</strong><p>Usamos cookies essenciais para garantir o funcionamento do site e armazenar suas preferências de navegação. Ao continuar, você concorda com nossa <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.</p></div><button type="button" id="lb-cookie-ok">Aceitar cookies</button></div></div>
-<script>(function(){try{var k="libertad-cookie-consent",b=document.getElementById("lb-cookie");if(!localStorage.getItem(k)){b.style.display="block";document.getElementById("lb-cookie-ok").onclick=function(){localStorage.setItem(k,"accepted");b.style.display="none"}}}catch(e){}})();</script>`;
+/** Aviso de cookies igual ao do resto do site (components/ui/CookieConsent.tsx): mesmo texto, mesma chave no localStorage
+ *  (quem já escolheu não vê de novo) e o "Recusar", que guarda a recusa (o site para de carregar o Google Tag Manager)
+ *  e apaga os cookies do Google Analytics já gravados (lib/cookie-consent.ts). */
+const COOKIE = `<div class="lb-cookie" id="lb-cookie" role="dialog" aria-labelledby="lb-cookie-t"><div class="lb-cookie__in"><div><strong id="lb-cookie-t">Utilizamos cookies</strong><p>Usamos cookies essenciais para garantir o funcionamento do site e armazenar suas preferências de navegação, e cookies de medição de audiência (Google Analytics) para entender como o site é usado. Ao continuar, você concorda com nossa <a href="/politica-de-privacidade" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.</p></div><div class="lb-cookie__acoes"><button type="button" id="lb-cookie-ok">Aceitar cookies</button><button type="button" class="lb-cookie__recusar" id="lb-cookie-no">Recusar</button></div></div></div>
+<script>(function(){try{var k="libertad-cookie-consent",b=document.getElementById("lb-cookie");if(localStorage.getItem(k))return;b.style.display="block";` +
+  `function guardar(v){try{localStorage.setItem(k,v)}catch(e){}b.style.display="none"}` +
+  `document.getElementById("lb-cookie-ok").onclick=function(){guardar("accepted")};` +
+  `document.getElementById("lb-cookie-no").onclick=function(){guardar("denied");` +
+  `var h=location.hostname.split("."),d=h.map(function(_,i){return h.slice(i).join(".")}).filter(function(x){return x.indexOf(".")>-1});` +
+  `document.cookie.split(";").forEach(function(c){var n=c.split("=")[0].trim();if(!/^(_ga|_gid|_gat|_gcl|_gac)/.test(n))return;` +
+  `var e=n+"=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";document.cookie=e;d.forEach(function(x){document.cookie=e+"; domain=."+x})})}` +
+  `}catch(e){}})();</script>`;
 
 const cabecalho = () => {
   const links = NAV.map(([nome, href]) => `<a href="${href}">${esc(nome)}</a>`).join('');

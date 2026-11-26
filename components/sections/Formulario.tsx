@@ -201,8 +201,9 @@ export function Formulario() {
                 </FormField>
 
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <FormField label="Patrimônio aproximado" error={errors.patrimonio?.message}>
+                  <FormField id="patrimonio" label="Patrimônio aproximado" error={errors.patrimonio?.message}>
                     <Select
+                      id="patrimonio"
                       items={PATRIMONIO_OPTIONS}
                       value={patrimonio}
                       onValueChange={(v) =>
@@ -225,8 +226,9 @@ export function Formulario() {
                     </Select>
                   </FormField>
 
-                  <FormField label="Objetivo principal" error={errors.objetivo?.message}>
+                  <FormField id="objetivo" label="Objetivo principal" error={errors.objetivo?.message}>
                     <Select
+                      id="objetivo"
                       items={OBJETIVO_OPTIONS}
                       value={objetivo}
                       onValueChange={(v) =>
