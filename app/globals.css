@@ -74,6 +74,11 @@
     @apply scroll-smooth;
   }
 
+  /* O cabeçalho é fixo: ao pular para uma seção (menu, links "/#secao"), o título dela não fica escondido atrás dele. */
+  section[id] {
+    scroll-margin-top: var(--header-height);
+  }
+
   h1,
   h2,
   h3,

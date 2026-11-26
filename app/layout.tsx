@@ -74,7 +74,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    // data-scroll-behavior: o Next desliga a rolagem suave do <html> ao trocar de página (o pulo é imediato) e a mantém nos links de seção.
+    <html lang="pt-BR" data-scroll-behavior="smooth">
       <body className={`${dmSans.variable} ${sora.variable} font-body antialiased`}>
         <GoogleTagManagerNoScript />
         <JsonLd />

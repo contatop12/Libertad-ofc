@@ -64,12 +64,18 @@ export function buildWhatsAppLink(message?: string): string {
   return `https://wa.me/${SITE.whatsapp}${text ? `?text=${text}` : ""}`;
 }
 
-export function scrollToSection(href: string): void {
-  const id = href.replace("#", "");
+/** Endereço de uma seção da página inicial que funciona em qualquer página do site ("#contato" → "/#contato"). */
+export function homeSectionHref(hash: string): string {
+  return `/${hash}`;
+}
+
+/** Rola até a seção desta página. Devolve `false` quando ela não existe aqui (ex.: nos Termos de Uso). */
+export function scrollToSection(href: string): boolean {
+  const id = href.slice(href.indexOf("#") + 1);
   const element = document.getElementById(id);
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
+  if (!element) return false;
+  element.scrollIntoView({ behavior: "smooth" });
+  return true;
 }
 
 export function scrollToContactForm(): void {

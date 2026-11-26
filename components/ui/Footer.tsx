@@ -4,7 +4,7 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 import { BrandButton } from "@/components/ui/brand-button";
 import { FaInstagram, FaLinkedinIn, FaWhatsapp } from "@/lib/brand-icons";
 import { CONTACT_SECTION_HREF, EQI_OMBUDSMAN, FOOTER_LINKS, FOOTER_SOLUTIONS, NAV_LINKS, OFFICES, SITE, SOCIAL_LINKS } from "@/lib/constants";
-import { buildWhatsAppLink } from "@/lib/utils";
+import { buildWhatsAppLink, homeSectionHref } from "@/lib/utils";
 
 const socialLinkClass =
   "flex size-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 transition-[color,background-color,border-color] duration-200 hover:border-libertad-gold/40 hover:bg-libertad-gold/10 hover:text-libertad-gold";
@@ -48,7 +48,7 @@ export function Footer() {
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
+                    href={homeSectionHref(link.href)}
                     className="text-[length:var(--text-body-sm)] text-white/70 transition-colors hover:text-libertad-gold"
                   >
                     {link.label}
@@ -64,7 +64,7 @@ export function Footer() {
               {FOOTER_SOLUTIONS.map((link) => (
                 <li key={link.label}>
                   <Link
-                    href={link.href}
+                    href={homeSectionHref(link.href)}
                     className="text-[length:var(--text-body-sm)] text-white/70 transition-colors hover:text-libertad-gold"
                   >
                     {link.label}
@@ -90,7 +90,7 @@ export function Footer() {
                 {SITE.email}
               </a>
             </div>
-            <BrandButton href={CONTACT_SECTION_HREF} variant="gold" size="default" className="mt-6">
+            <BrandButton href={homeSectionHref(CONTACT_SECTION_HREF)} variant="gold" size="default" className="mt-6">
               Agendar Reunião
             </BrandButton>
           </div>
@@ -148,22 +148,18 @@ export function Footer() {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-4">
-            <a
+            <Link
               href={FOOTER_LINKS.privacy}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-[length:var(--text-caption)] text-white/50 transition-colors hover:text-libertad-gold"
             >
               Política de Privacidade
-            </a>
-            <a
+            </Link>
+            <Link
               href={FOOTER_LINKS.terms}
-              target="_blank"
-              rel="noopener noreferrer"
               className="text-[length:var(--text-caption)] text-white/50 transition-colors hover:text-libertad-gold"
             >
               Termos de Uso
-            </a>
+            </Link>
             <div className="flex items-center gap-2">
               <a
                 href={SOCIAL_LINKS.instagram}

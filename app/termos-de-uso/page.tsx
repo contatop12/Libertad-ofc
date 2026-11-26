@@ -24,7 +24,7 @@ export default function TermosDeUsoPage() {
   return (
     <>
       <Header />
-      <main className="bg-libertad-off-white py-[var(--section-py)]">
+      <main className="bg-libertad-off-white pt-[calc(var(--header-height)+clamp(2rem,5vw,3.5rem))] pb-[var(--section-py)]">
         <div className="mx-auto max-w-[var(--container-max)] px-[var(--container-px)]">
           <Link
             href="/"
